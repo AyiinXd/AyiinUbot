@@ -1,0 +1,44 @@
+{
+    "name": "⋆ Ayiin Ubot ⋆",
+    "description": "[AyiinUbot] Userbot Hanya Untuk Bersenang - Senang",
+    "logo": "https://telegra.ph/file/c6a0aef41355af5a018c6.jpg",
+    "keywords": ["telegram", "userbot", "AyiinUbot", "pyrogram", "modular", "python"],
+    "repository": "https://github.com/AyiinXd/AyiinUbot",
+    "stack": "heroku-22",
+    "env": {
+      "API_ID": {
+        "description": "Dapatkan API KEY di Grup » https://t.me/AyiinChat » Lalu ketik /get api atau di web my.telegram.org Masukan yg APP ID Telegram",
+        "required": true
+      },
+      "API_HASH": {
+        "description": "Dapatkan API Hash di Grup » https://t.me/AyiinChat » Lalu ketik /get api atau di web my.telegram.org",
+        "required": true
+      },
+       "STRING_1": {
+        "description": "Dapatkan String Session di Grup » https://t.me/AyiinChat » Lalu ketik /get string",
+        "required": true
+      },
+      "HEROKU_APP_NAME": {
+        "description": "Nama App heroku, Nama App yang paling pertama di isi (liat paling atas)",
+        "required": true
+      },
+      "HEROKU_API_KEY": {
+        "description": "Ambil Heroku API KEY mu disini » https://dashboard.heroku.com/account",
+        "required": true
+    },
+    "buildpacks": [
+      {
+        "url": "heroku/python"
+      },
+      {
+        "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+      }
+    ],
+    "formation": {
+      "ayiin": {
+        "quantity": 1,
+        "size": "eco"
+      }
+    }
+  }
+}

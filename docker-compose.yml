@@ -1,0 +1,16 @@
+version: "1.0"
+services:
+  ayiin:
+    build: .
+    environment:
+      API_ID: $API_ID
+      API_HASH: $API_HASH
+      BOT_TOKEN: $BOT_TOKEN
+      HEROKU_APP_NAME: $HEROKU_APP_NAME
+      HEROKU_API_KEY: $HEROKU_API_KEY
+      MONGO_URI: $MONGO_URI
+      STRING_1: $STRING_1
+      STRING_2: $STRING_2
+      STRING_3: $STRING_3
+      STRING_4: $STRING_4
+      STRING_5: $STRING_5
