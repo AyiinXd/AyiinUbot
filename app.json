@@ -18,6 +18,19 @@
         "description": "Dapatkan String Session di Grup » https://t.me/AyiinChat » Lalu ketik /get string",
         "required": true
       },
+      "BOT_TOKEN": {
+        "description": "SIlahkan buat bot anda di https://t.me/BotFather dan masukkan Bot Tokennya",
+        "required": true
+      },
+      "MONGO_URI": {
+        "description": "Dapatkan String Session di Grup » https://t.me/AyiinChat » Lalu ketik /get vps",
+        "required": true
+      },
+      "LOG_CHAT": {
+        "description": "Buat Group Log Publik Anda dan masukkan https://t.me/MissRose_bot lalu ketik /id",
+        "value": "-100", 
+        "required": true
+      },
       "HEROKU_APP_NAME": {
         "description": "Nama App heroku, Nama App yang paling pertama di isi (liat paling atas)",
         "required": true
@@ -26,6 +39,7 @@
         "description": "Ambil Heroku API KEY mu disini » https://dashboard.heroku.com/account",
         "required": true
     },
+
     "buildpacks": [
       {
         "url": "heroku/python"
