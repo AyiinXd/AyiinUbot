@@ -23,7 +23,7 @@
         "required": true
       },
       "MONGO_URI": {
-        "description": "Dapatkan String Session di Grup » https://t.me/AyiinChat » Lalu ketik /get vps",
+        "description": "Dapatkan Link MongoDB di Grup » https://t.me/AyiinChat » Lalu ketik /get link",
         "required": true
       },
       "LOG_CHAT": {
