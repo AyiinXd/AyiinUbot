@@ -13,15 +13,18 @@
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
 
-import time
+import logging
 
 from config import *
-
+from git import Repo
 from pyAyiin import PyrogramXd
+from pyAyiin.Clients import *
 from pyAyiin.config import Var
+from pyAyiin.pyrogram import eod, eor
 
 
-StartTime = time.time()
+repo = Repo()
+branch = repo.active_branch
 yins = PyrogramXd()
 var = Var()
 hndlr = [
@@ -32,3 +35,4 @@ hndlr = [
     f"{var.HNDLR[4]}",
     f"{var.HNDLR[5]}",
 ]
+logs = logging.getLogger(__name__)

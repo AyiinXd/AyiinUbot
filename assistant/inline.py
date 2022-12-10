@@ -13,14 +13,19 @@
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
 
-from fipper.types import *
+import time
 
-from pyAyiin import CMD_HELP
+from datetime import datetime
+from fipper import Client
+from fipper.types import *
+from git import Repo
+
+from pyAyiin import CMD_HELP, StartTime
 from pyAyiin.assistant import inline
 
 from config import Var
 
-from . import yins
+from . import *
 
 
 handler = f"{Var.HNDLR[0]} {Var.HNDLR[1]} {Var.HNDLR[2]} {Var.HNDLR[3]} {Var.HNDLR[4]} {Var.HNDLR[5]}"
@@ -32,6 +37,17 @@ def help_string():
 """
 
     return text
+
+
+def update_string():
+    teks = f'''
+<b>Tersedia Pembaruan Untuk [{branch}]</b>
+
+<b>•</b> Klik Update Untuk Memperbarui [{branch}]
+<b>•</b> Klik Changelog Untuk Melihat Pembaruan
+'''
+    
+    return teks
 
 
 @inline(pattern="help")
@@ -82,4 +98,87 @@ async def inline_result(_, iq):
     await iq.answer(
         rslts,
         cache_time=0
+    )
+
+
+@inline(pattern="alive")
+async def inline_result(_: Client, iq):
+    alive = await yins.alive('plugins-tab')
+    await iq.answer(
+        alive,
+        cache_time=0
+    )
+
+
+
+@inline(pattern="ping")
+async def inline_result(_: Client, iq):
+    start = datetime.now()
+    uptime = await yins.get_readable_time((time.time() - StartTime))
+    time.sleep(2)
+    end = datetime.now()
+    duration = (end - start).microseconds / 1000
+    out_ping = (
+        f"<b>✧ Aʏɪɪɴ Uʙᴏᴛ ✧</b>\n\n"
+        f"<b>✧ Pɪɴɢᴇʀ :</b> <code>{duration}ms</code>\n"
+        f"<b>✧ Uᴘᴛɪᴍᴇ :</b> <code>{uptime}</code>"
+    )
+    ping_result = [
+        (
+            InlineQueryResultArticle(
+                title="Ping Ayiin Ubot!",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="• Help •",
+                                callback_data="plugins-tab",
+                            ),
+                        ]
+                    ]
+                ),
+                input_message_content=InputTextMessageContent(out_ping),
+            )
+        )
+    ]
+    await iq.answer(
+        ping_result,
+        cache_time=0,
+    )
+
+
+
+@inline(pattern='in_update', client_only=True)
+async def inline_update(client, iq):
+    update_results = [
+        (
+            InlineQueryResultArticle(
+                title='Update Ayiin Ubot!',
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text='• Update •',
+                                callback_data='update_now',
+                            ),
+                            InlineKeyboardButton(
+                                text='• Changelog •',
+                                callback_data='changelog',
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text='• Close •',
+                                callback_data='close',
+                            ),
+                        ]
+                    ]
+                ),
+                input_message_content=InputTextMessageContent(update_string()),
+            )
+        )
+    ]
+    await iq.answer(
+        update_results,
+        cache_time=0,
     )
