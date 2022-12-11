@@ -18,16 +18,17 @@ import heroku3
 import os
 import sys
 
+from fipper import Client
 from fipper.enums import ParseMode
 from fipper.types import *
 from git import Repo
 from git.exc import GitCommandError
 
+from config import *
+
 from pyAyiin import CMD_HELP, HOSTED_ON, ayiin_ver
 from pyAyiin.assistant import callback
 from random import choice
-
-from config import Var
 
 from . import *
 from .inline import help_string
@@ -35,7 +36,7 @@ from .inline import help_string
 
 
 # Callback Inline Help
-@callback(pattern="plugins-tab")
+@callback(pattern="plugins-tab", client_only=True)
 async def plugins_page(_, cb: CallbackQuery):
     btn = yins.HelpXd(0, CMD_HELP, "xd")
     await cb.edit_message_text(
@@ -44,28 +45,28 @@ async def plugins_page(_, cb: CallbackQuery):
     )
 
 
-@callback(pattern="xd-next\\((.+?)\\)")
+@callback(pattern="xd-next\\((.+?)\\)", client_only=True)
 async def give_next_page(_, cb: CallbackQuery):
     current_page_number = int(cb.matches[0].group(1))
     btn = yins.HelpXd(current_page_number + 1, CMD_HELP, "xd")
     await cb.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
 
-@callback(pattern="xd-prev\\((.+?)\\)")
+@callback(pattern="xd-prev\\((.+?)\\)", client_only=True)
 async def give_old_page(_, cb: CallbackQuery):
     current_page_number = int(cb.matches[0].group(1))
     btn = yins.HelpXd(current_page_number - 1, CMD_HELP, "xd")
     await cb.edit_message_reply_markup(reply_markup=InlineKeyboardMarkup(btn))
 
 
-@callback(pattern="back-to-plugins-(.*)")
+@callback(pattern="back-to-plugins-(.*)", client_only=True)
 async def get_back(_, cb: CallbackQuery):
     page_number = int(cb.matches[0].group(1))
     btn = yins.HelpXd(page_number, CMD_HELP, "xd")
     await cb.edit_message_text(text=help_string(), reply_markup=InlineKeyboardMarkup(btn))
 
 
-@callback(pattern="pluginlist-(.*)")
+@callback(pattern="pluginlist-(.*)", client_only=True)
 async def give_plugin_cmds(_, cb: CallbackQuery):
     plugin_name, page_number = cb.matches[0].group(1).split("|", 1)
     plugs = await yins.PluginXd(CMD_HELP, plugin_name)
@@ -85,7 +86,7 @@ async def give_plugin_cmds(_, cb: CallbackQuery):
     )
 
 
-@callback(pattern='update_now')
+@callback(pattern='update_now', client_only=True)
 async def update_callback(_, cb: CallbackQuery):
     repo = Repo()
     ac_br = repo.active_branch
@@ -208,8 +209,20 @@ async def changelog_callback(client, cb: CallbackQuery):
         )
 
 
+@callback(pattern="terima_(.*)", client_only=True)
+async def get_back(client: Client, cb: CallbackQuery):
+    user_ids = int(cb.matches[0].group(1))
+    await yins.approve_pmpermit(cb, user_ids, OLD_MSG)
+
+
+@callback(pattern="tolak_(.*)", client_only=True)
+async def get_back(client: Client, cb: CallbackQuery):
+    user_ids = int(cb.matches[0].group(1))
+    await yins.disapprove_pmpermit(cb, user_ids)
+
+
 # Callback Create Ubot
-@callback("session_1")
+@callback("session_1", client_only=True)
 async def added_to_group_msg(bot, cq):
     vars = 'STRING_1'
     if Var.STRING_1 is not None:
@@ -254,7 +267,7 @@ async def added_to_group_msg(bot, cq):
 
 
 # Callback Create Ubot
-@callback("session_2")
+@callback("session_2", client_only=True)
 async def added_to_group_msg(bot, cq):
     vars = 'STRING_2'
     if Var.STRING_2 is not None:
@@ -298,7 +311,7 @@ async def added_to_group_msg(bot, cq):
     await cq.message.delete()
 
 
-@callback("session_3")
+@callback("session_3", client_only=True)
 async def added_to_group_msg(bot, cq):
     vars = 'STRING_3'
     if Var.STRING_3 is not None:
@@ -342,7 +355,7 @@ async def added_to_group_msg(bot, cq):
     await cq.message.delete()
 
 
-@callback("session_4")
+@callback("session_4", client_only=True)
 async def added_to_group_msg(bot, cq):
     vars = 'STRING_4'
     if Var.STRING_4 is not None:
@@ -386,7 +399,7 @@ async def added_to_group_msg(bot, cq):
     await cq.message.delete()
 
 
-@callback("session_5")
+@callback("session_5", client_only=True)
 async def added_to_group_msg(bot, cq):
     vars = 'STRING_5'
     if Var.STRING_5 is not None:
@@ -430,12 +443,12 @@ async def added_to_group_msg(bot, cq):
     await cq.message.delete()
 
 
-@callback(pattern='close')
+@callback(pattern='close', client_only=True)
 async def close_cb(_, cb):
     try:
         await cb.message.delete()
     except BaseException:
         await cb.answer(
-            'Gagal menghapus Pesan...\nIni Belum Di Fix Tod',
+            'Gagal menghapus Pesan...',
             show_alert=True,
         )

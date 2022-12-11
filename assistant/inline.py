@@ -13,17 +13,17 @@
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
 
+import os
 import time
 
 from datetime import datetime
 from fipper import Client
 from fipper.types import *
-from git import Repo
+
+from config import *
 
 from pyAyiin import CMD_HELP, StartTime
 from pyAyiin.assistant import inline
-
-from config import Var
 
 from . import *
 
@@ -69,7 +69,7 @@ async def inline_result(_, inline_query):
     )
 
 
-@inline(pattern="paste")
+@inline(pattern="paste", client_only=True)
 async def inline_result(_, iq):
     query = iq.query
     ok = query.split("-")[1]
@@ -101,7 +101,7 @@ async def inline_result(_, iq):
     )
 
 
-@inline(pattern="alive")
+@inline(pattern="alive", client_only=True)
 async def inline_result(_: Client, iq):
     alive = await yins.alive('plugins-tab')
     await iq.answer(
@@ -111,7 +111,7 @@ async def inline_result(_: Client, iq):
 
 
 
-@inline(pattern="ping")
+@inline(pattern="ping", client_only=True)
 async def inline_result(_: Client, iq):
     start = datetime.now()
     uptime = await yins.get_readable_time((time.time() - StartTime))
@@ -150,6 +150,8 @@ async def inline_result(_: Client, iq):
 
 @inline(pattern='in_update', client_only=True)
 async def inline_update(client, iq):
+    query = iq.query
+    ok = query.split("-")
     update_results = [
         (
             InlineQueryResultArticle(
@@ -180,5 +182,16 @@ async def inline_update(client, iq):
     ]
     await iq.answer(
         update_results,
+        cache_time=0,
+    )
+
+
+@inline(pattern='pmpermit', client_only=True)
+async def inline_pmpermit(_, iq):
+    query = iq.query
+    ids = query.split("_")[1]
+    xnxx = await yins.inline_pmpermit(ids)
+    await iq.answer(
+        xnxx,
         cache_time=0,
     )
