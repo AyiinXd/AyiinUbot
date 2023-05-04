@@ -31,7 +31,7 @@ class Var:
     BOT_TOKEN = getenv("BOT_TOKEN", "")
     BLACKLIST_CHAT = getenv("BLACKLIST_CHAT", None)
     if not BLACKLIST_CHAT:
-        BLACKLIST_CHAT = [-1001473548283, -1001675396283]
+        BLACKLIST_CHAT = [-1001473548283, -1001675396283, -1001812143750]
     LOG_CHAT = int(getenv("LOG_CHAT") or 0)
     HNDLR = getenv("HNDLR", [".", "!", "*", "^", "-", "?"])
     DB_URL = getenv("DATABASE_URL", "")
