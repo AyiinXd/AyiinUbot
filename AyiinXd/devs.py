@@ -12,7 +12,6 @@ import traceback
 import sys
 import os
 import os.path
-import random
 import re
 import subprocess
 import time
@@ -25,7 +24,7 @@ from fipper import Client
 from fipper.types import Message
 
 from config import Var
-from pyAyiin import Ayiin, CMD_HELP
+from pyAyiin import Ayiin
 
 from . import *
 

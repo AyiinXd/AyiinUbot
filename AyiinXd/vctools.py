@@ -13,14 +13,9 @@
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
 
-from time import sleep
-from contextlib import suppress
-
-
 from fipper.types import Message
 
 from pyAyiin import Ayiin, CMD_HELP, Yins
-from pyAyiin.Clients.client import Bots
 
 from . import *
 

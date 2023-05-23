@@ -19,7 +19,6 @@ from time import sleep
 
 from fipper import Client
 from fipper.enums import ChatType
-from fipper.errors import YouBlockedUser
 from fipper.types import Message
 
 from pyAyiin import Ayiin, CMD_HELP

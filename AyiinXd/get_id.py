@@ -14,7 +14,6 @@
 # ========================×========================
 
 from fipper import Client
-from fipper.enums.chat_type import ChatType
 from fipper.errors import PeerIdInvalid
 from fipper.types import Message
 

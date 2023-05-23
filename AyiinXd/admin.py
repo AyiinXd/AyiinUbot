@@ -8,14 +8,12 @@
 # t.me/SharingUserbot & t.me/Lunatic0de
 
 import asyncio
-from html import escape
 
 from fipper import Client, enums
 from fipper.errors import ChatAdminRequired, UserCreator
-from fipper.types import ChatPermissions, ChatPrivileges, Message, InlineKeyboardButton, InlineKeyboardMarkup
+from fipper.types import ChatPermissions, ChatPrivileges, Message
 
-from config import Var
-from pyAyiin import Ayiin, CMD_HELP, DEVS, tgbot
+from pyAyiin import Ayiin, CMD_HELP, DEVS
 from pyAyiin.pyrogram import eor
 
 from . import *

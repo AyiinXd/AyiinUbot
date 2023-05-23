@@ -13,10 +13,6 @@
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
 
-import time
-
-from datetime import datetime
-
 from fipper import Client
 from fipper.types import Message
 
