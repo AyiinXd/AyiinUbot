@@ -22,7 +22,7 @@ prettytable
 psutil
 psycopg2-binary
 ptable
-py-Ayiin
+py-Ayiin==0.3.3
 pybase64
 pymediainfo
 pymongo[srv]
