@@ -6,7 +6,7 @@
 # <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
 #
 # FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
+# t.me/AyiinChats & t.me/AyiinChannel
 
 
 # ========================×========================
@@ -17,16 +17,16 @@ from fipper import Client
 from fipper.errors import PeerIdInvalid
 from fipper.types import Message
 
-from pyAyiin import Ayiin, CMD_HELP
+from pyAyiin import Ayiin
 from pyAyiin.pyrogram import eod, eor
 
 from . import *
 
 
-@Ayiin(['id', 'get_id'])
-async def get_id(client: Client, msg: Message):
+@Ayiin(['id', 'get_id'], langs=True)
+async def get_id(client: Client, msg: Message, _):
     usr_text = ''
-    xxx = await eor(msg, '**Processing...**')
+    xxx = await eor(msg, _['p'])
     reply = msg.reply_to_message
     chats = msg.chat.id
     cmd = yins.get_cmd(msg)
@@ -47,7 +47,7 @@ async def get_id(client: Client, msg: Message):
         try:
             user = await client.get_users(cmd)
         except PeerIdInvalid:
-            await eod(xxx, 'Maaf saya tidak bisa menemukan pengguna...')
+            await eod(xxx, _['err_user'])
         mention = user.mention
         ids = user.id
         usr_text += f'**User:** {mention}\n'
@@ -56,14 +56,3 @@ async def get_id(client: Client, msg: Message):
         await xxx.edit(usr_text)
     else:
         await xxx.edit(f'**ID:** {chats}')
-
-
-CMD_HELP.update(
-    {'get_id': (
-        'get_id',
-        {
-            'id <reply/id>' : 'Berikan id atau balas ke pesan pengguna untuk mendapatkan id.\n\nKetik .id untuk mendapatkan id chat saat ini.'
-        }
-    )
-    }
-)

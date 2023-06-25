@@ -6,12 +6,13 @@
 # <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
 #
 # FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
+# t.me/AyiinChats & t.me/AyiinChannel
 
 
 # ========================×========================
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
+
 
 from fipper import Client
 from fipper.types import Message
@@ -22,8 +23,8 @@ from pyAyiin.decorator import Ayiin
 from . import *
 
 
-@Ayiin(["ping"])
-async def pingme(client: Client, message: Message):
+@Ayiin(["ping"], langs=True)
+async def pingme(client: Client, message: Message, _):
     if tgbot:
         try:
             xnxx = await message.reply("<b>✧</b>")
@@ -32,7 +33,7 @@ async def pingme(client: Client, message: Message):
             await xnxx.edit("<b>✧✧✧✧</b>")
             await xnxx.edit("<b>✧✧✧✧✧</b>")
             tgbot.me = await tgbot.get_me()
-            results = await client.get_inline_bot_results(tgbot.me.username, f"ping")
+            results = await client.get_inline_bot_results(tgbot.me.username, "ping")
             await message.reply_inline_bot_result(
                 results.query_id,
                 results.results[0].id,
@@ -40,7 +41,7 @@ async def pingme(client: Client, message: Message):
             )
             await xnxx.delete()
         except BaseException as e:
-            await eod(xnxx, f"<b>ERROR:</b> <code>{e}</code>")
+            await eod(xnxx, _['err'].format(e))
 
 
 CMD_HELP.update(

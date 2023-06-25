@@ -1,35 +1,21 @@
 from random import choice
 
-from pyAyiin import Ayiin, API_AI, CMD_HELP
+from pyAyiin import Ayiin, CMD_HELP
 
 from . import *
 
 
-@Ayiin(["openai", "ai"])
-async def open_ai(_, message):
+@Ayiin(["openai", "ai", "ask"], langs=True)
+async def open_ai(_, message, xd):
     if len(message.command) == 1:
         return await message.reply(f"Ketik <code>{choice(hndlr)}ai [question]</code> Pertanyaan untuk menggunakan OpenAI")
     question = yins.get_cmd(message)
-    msg = await message.reply("<code>Processing...</code>")
+    msg = await message.reply(xd["p"])
     try:
-        date = await yins.post(
-            "https://api.openai.com/v1/completions",
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {API_AI}",
-            }, 
-            json={
-                "model": "text-davinci-003",
-                "prompt": question,
-                "max_tokens": 500,
-                "temperature": 0,
-            },
-        )
-        await msg.edit(date["choices"][0]["text"])
-    except Exception:
-        pass
-    except BaseException as ex:
-        await message.reply(f"ERROR: {ex}")
+        ai_answer = await yins.ask_ai(question)
+        await msg.edit(ai_answer)
+    except BaseException as e:
+        await msg.edit(xd["err"].format(e))
 
 
 CMD_HELP.update(

@@ -6,10 +6,6 @@
 # <https://www.github.com/mrismanaziz/PyroMan-UserBot/blob/main/LICENSE/>.
 #
 # t.me/SharingUserbot & t.me/Lunatic0de
-#
-# Recode by: @AyiinXd
-# t.me/AyiinChat & t.me/AyiinSupport
-
 
 import asyncio
 
@@ -19,19 +15,18 @@ from fipper.types import Message
 
 from pyAyiin import Ayiin, CMD_HELP, DEVS, GCAST_BLACKLIST
 from pyAyiin.dB.blacklistgcast import add_blacklist_gcast, blacklisted, is_blacklist_gcast, remove_blacklist_gcast
-from pyAyiin.pyrogram import eor
 
 
 from . import yins
 
 
-@Ayiin(["fgcast", "fw_cast"])
-async def gcast_cmd(client: Client, message: Message):
+@Ayiin(["fgcast", "fw_cast"], langs=True)
+async def gcast_cmd(client: Client, message: Message, _):
     BL = await blacklisted()
     if message.reply_to_message:
-        AyiinXD = await message.reply("<code>Started global broadcast...</code>")
+        AyiinXD = await message.reply(_["p"])
     else:
-        return await message.edit_text("<b>Berikan Sebuah Pesan atau Reply</b>")
+        return await message.edit_text(_["reply"])
     x = message.reply_to_message.id
     y = message.chat.id
     done = 0
@@ -41,9 +36,7 @@ async def gcast_cmd(client: Client, message: Message):
                 enums.ChatType.GROUP,
                 enums.ChatType.SUPERGROUP]:
             chat = dialog.chat.id
-            if (chat not in GCAST_BLACKLIST 
-                and chat not in BL
-            ):
+            if chat not in GCAST_BLACKLIST and chat not in BL:
                 try:
                     await client.forward_messages(chat, y, x)
                     done += 1
@@ -57,18 +50,16 @@ async def gcast_cmd(client: Client, message: Message):
                 except Exception:
                     error += 1
                     await asyncio.sleep(0.3)
-    await AyiinXD.edit_text(
-        f"<b>Berhasil Menyebarkan Gosip Terusan...\n\nBerhasil Ke</b> <code>{done}</code> <b>Grup\nGagal Ke</b> <code>{error}</code> <b>Grup</b>"
-    )
+    await AyiinXD.edit_text(_["gcast_1"].format(done, error))
 
 
-@Ayiin(["gcast", "broadcast"])
-async def gcast_cmd(client: Client, message: Message):
+@Ayiin(["gcast", "broadcast"], langs=True)
+async def gcast_cmd(client: Client, message: Message, _):
     BL = await blacklisted()
     if message.reply_to_message:
-        AyiinXD = await message.reply("<code>Started global broadcast...</code>")
+        AyiinXD = await message.reply(_['p'])
     else:
-        return await message.edit_text("<b>Balas Ke Pesan Untuk Menyebarkan Gosipan Anda</b>")
+        return await message.edit_text(_['reply'])
     x = message.reply_to_message.id
     y = message.chat.id
     done = 0
@@ -78,10 +69,7 @@ async def gcast_cmd(client: Client, message: Message):
                 enums.ChatType.GROUP,
                 enums.ChatType.SUPERGROUP]:
             chat = dialog.chat.id
-            if (
-                chat not in GCAST_BLACKLIST 
-                and chat not in BL
-            ):
+            if chat not in GCAST_BLACKLIST and chat not in BL:
                 try:
                     await client.copy_message(chat, y, x)
                     await asyncio.sleep(0.1)
@@ -95,17 +83,15 @@ async def gcast_cmd(client: Client, message: Message):
                     done += 1
                 except BaseException:
                     error += 1
-    await AyiinXD.edit_text(
-        f"<b>Status Penyebaran Gosip...\n\nBerhasil Ke</b> <code>{done}</code> <b>Grup\nGagal Ke</b> <code>{error}</code> <b>Grup</b>"
-    )
+    await AyiinXD.edit_text(_['gcast_2'].format(done, error))
 
 
-@Ayiin(["gucast"])
-async def gucast_cmd(client: Client, message: Message):
-    if message.reply_to_message or yins.get_cmd(message):
-        XD = await eor(message, "<code>Started global broadcast...</code>")
+@Ayiin(["gucast"], langs=True)
+async def gucast_cmd(client: Client, message: Message, _):
+    if message.reply_to_message:
+        XD = await message.reply(_['p'])
     else:
-        return await message.edit_text("<b>Berikan Sebuah Pesan atau Reply</b>")
+        return await message.edit_text(_['reply'])
     done = 0
     error = 0
     async for dialog in client.get_dialogs():
@@ -126,14 +112,12 @@ async def gucast_cmd(client: Client, message: Message):
                 except Exception:
                     error += 1
                     await asyncio.sleep(0.3)
-    await XD.edit_text(
-        f"<b>Berhasil Mengirim Pesan Ke</b> <code>{done}</code> <b>chat, Gagal Mengirim Pesan Ke</b> <code>{error}</code> <b>chat</b>"
-    )
+    await XD.edit_text(_['gcast_3'].format(done, error))
 
 
 
-@Ayiin(['addblacklist', 'addbl'])
-async def add_bl(client: Client, message: Message):
+@Ayiin(['addblacklist', 'addbl'], langs=True)
+async def add_bl(client: Client, message: Message, _):
     chat_id = message.chat.id
     cmd = yins.get_cmd(message)
     if cmd:
@@ -142,22 +126,22 @@ async def add_bl(client: Client, message: Message):
             is_done = await is_blacklist_gcast(chat_ids.id)
             if not is_done:
                 await add_blacklist_gcast(chat_ids.id)
-                return await message.reply(f'Berhasil Menambahkan {chat_ids.id} Ke Database')
+                return await message.reply(_['gcast_4'].format(chat_ids.id))
             else:
-                return await message.reply(f'CHAT ID : {chat_ids.id}\n\nSudah ada di Database')
-        except Exception:
-            return await message.reply('[ERROR] - Group Chat tidak ditemukan')
+                return await message.reply(_['gcast_5'].format(chat_ids.id))
+        except Exception as e:
+            return await message.reply(_['err'].format(e))
     else:
         is_done = await is_blacklist_gcast(chat_id)
         if not is_done:
             await add_blacklist_gcast(chat_id)
-            return await message.reply(f'Berhasil Menambahkan {chat_id} Ke Database')
+            return await message.reply(_['gcast_4'].format(chat_id))
         else:
-            return await message.reply(f'CHAT ID : {chat_id}\n\nSudah ada di Database')
+            return await message.reply(_['gcast_5'].format(chat_id))
 
 
-@Ayiin(['delblacklist', 'delbl'])
-async def del_bl(client: Client, message: Message):
+@Ayiin(['delblacklist', 'delbl'], langs=True)
+async def del_bl(client: Client, message: Message, _):
     chat_id = message.chat.id
     cmd = yins.get_cmd(message)
     if cmd:
@@ -166,24 +150,22 @@ async def del_bl(client: Client, message: Message):
             is_done = await is_blacklist_gcast(chat_ids.id)
             if is_done:
                 await remove_blacklist_gcast(chat_ids.id)
-                #BLACKLIST_GCAST.remove(chat_ids.id)
-                return await message.reply(f'Berhasil Menghapus {chat_ids.id} dari Database')
+                return await message.reply(_['gcast_6'].format(chat_ids.id))
             else:
-                return await message.reply(f'CHAT ID : {chat_ids}\n\nTidak ada di Database')
-        except Exception:
-            return await message.reply('[ERROR] - Group Chat tidak ditemukan\n\nSilahkan ke Group lalu ketik <code>.addbl</code>')
+                return await message.reply(_['gcast_7'].format(chat_ids.id))
+        except Exception as e:
+            return await message.reply(_['err'].format(e))
     else:
         is_done = await is_blacklist_gcast(chat_id)
         if is_done:
             await remove_blacklist_gcast(chat_id)
-            #BLACKLIST_GCAST.remove(chat_id)
-            return await message.reply(f'Berhasil Menghapus {chat_id} dari Database')
+            return await message.reply(_['gcast_6'].format(chat_id))
         else:
-            return await message.reply(f'CHAT ID : {chat_id}\n\nTidak ada di Database')
+            return await message.reply(_['gcast_7'].format(chat_id))
 
 
-@Ayiin(['blacklist', 'blchat'])
-async def list_bl(client: Client, message: Message):
+@Ayiin(['blacklist', 'blchat'], langs=True)
+async def list_bl(client: Client, message: Message, _):
     chats = await blacklisted()
     chat_id = f'{chats}'
     list = (
@@ -193,8 +175,8 @@ async def list_bl(client: Client, message: Message):
     )
     count = len(chats)
     if count == 0:
-        return await message.reply('List BLACKLIST_GCAST anda saat ini kosong\n\nSilahkan gunakan `.addbl chat_id` atau ketik `.addbl` di group manapun...')
-    return await message.reply(f'BLACKLIST_GCAST in {count} GROUP\n\nList:\n⇒ {list}')
+        return await message.reply(_['gcast_8'])
+    return await message.reply(_['gcast_9'].format(count, list))
 
 
 CMD_HELP.update(

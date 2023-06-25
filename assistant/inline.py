@@ -6,34 +6,34 @@
 # <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
 #
 # FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
+# t.me/AyiinChats & t.me/AyiinChannel
 
 
 # ========================×========================
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
 
-import os
 import time
 
+from platform import python_version
 from datetime import datetime
-from fipper import Client
+
+from fipper import __version__ as fip_ver, Client
 from fipper.types import *
 
 from config import *
 
-from pyAyiin import CMD_HELP, StartTime
+from pyAyiin import CMD_HELP, HOSTED_ON, StartTime, __version__, ayiin_ver, hndlr
 from pyAyiin.assistant import inline
 
 from . import *
 
 
-handler = f"{Var.HNDLR[0]} {Var.HNDLR[1]} {Var.HNDLR[2]} {Var.HNDLR[3]} {Var.HNDLR[4]} {Var.HNDLR[5]}"
-
 def help_string():
     text = f"""
-<b>Help Module</b>
-    <b>Prefixes:</b> <code>{handler}</code>
+<b>Help Module:</b>
+    <b>Prefixes:</b> <code>{hndlr}</code>
+    <b>Plugin:</b> <code>{len(CMD_HELP)}</code>
 """
 
     return text
@@ -50,19 +50,24 @@ def update_string():
     return teks
 
 
+def alive_string():
+    output = f'''
+<b>Tʜᴇ Ayiin Ubot</b>
+<b>{var.ALIVE_TEXT}</b>
+<b>╭✠╼━━━━━━━━━━━━━━━✠╮</b>
+≽ <b>Mᴏᴅᴜʟᴇs :</b> <code>{len(CMD_HELP)} Modules</code>
+≽ <b>Pʏᴛʜᴏɴ Vᴇʀsɪᴏɴ :</b> <code>{python_version()}</code>
+≽ <b>Pʏʀᴏɢʀᴀᴍ Vᴇʀsɪᴏɴ :</b> <code>{fip_ver}</code>
+≽ <b>Pʏ-Aʏɪɪɴ Vᴇʀsɪᴏɴ :</b> <code>{__version__}</code>
+≽ <b>Aʏɪɪɴ Vᴇʀsɪᴏɴ :</b> <code>{ayiin_ver}</code> [{HOSTED_ON}]
+╰✠╼━━━━━━━━━━━━━━━✠╯
+    '''
+    return output
+
+
 @inline(pattern="help")
 async def inline_result(_, inline_query):
-    rslts=[
-        (
-            InlineQueryResultArticle(
-                title="Ayiin Ubot!",
-                reply_markup=InlineKeyboardMarkup(
-                    yins.HelpXd(0, CMD_HELP, "xd")
-                ),
-                input_message_content=InputTextMessageContent(help_string()),
-            )
-        )
-    ]
+    rslts= await yins.inline_help(help_string())
     await inline_query.answer(
         rslts,
         cache_time=0
@@ -103,9 +108,9 @@ async def inline_result(_, iq):
 
 @inline(pattern="alive", client_only=True)
 async def inline_result(_: Client, iq):
-    alive = await yins.alive('plugins-tab')
+    aliv = await yins.inline_alive(alive_string())
     await iq.answer(
-        alive,
+        aliv,
         cache_time=0
     )
 
@@ -151,7 +156,6 @@ async def inline_result(_: Client, iq):
 @inline(pattern='in_update', client_only=True)
 async def inline_update(client, iq):
     query = iq.query
-    ok = query.split("-")
     update_results = [
         (
             InlineQueryResultArticle(
@@ -166,12 +170,6 @@ async def inline_update(client, iq):
                             InlineKeyboardButton(
                                 text='• Changelog •',
                                 callback_data='changelog',
-                            ),
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                text='• Close •',
-                                callback_data='close',
                             ),
                         ]
                     ]
@@ -190,8 +188,55 @@ async def inline_update(client, iq):
 async def inline_pmpermit(_, iq):
     query = iq.query
     ids = query.split("_")[1]
-    xnxx = await yins.inline_pmpermit(ids)
+    user_ids = query.split("_")[2]
+    xnxx = await yins.inline_pmpermit(ids, user_ids)
     await iq.answer(
         xnxx,
+        cache_time=0,
+    )
+
+
+@inline(pattern='pin')
+async def inline_update(client, iq):
+    query = iq.query
+    ok = query.split("_")[1]
+    update_results = [
+        (
+            InlineQueryResultArticle(
+                title='Pinned Ayiin Ubot!',
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text='• Cek Pinned •',
+                                url=f'{ok}',
+                            ),
+                        ]
+                    ]
+                ),
+                input_message_content=InputTextMessageContent(f'\nPesan Berhasil di sematkan tod!!!'),
+            )
+        )
+    ]
+    await iq.answer(
+        update_results,
+        cache_time=0,
+    )
+
+
+@inline(pattern='langs', client_only=True, langs=True)
+async def inline_lang(client, iq, _):
+    text, button = await yins.inline_languages(_)
+    update_results = [
+        (
+            InlineQueryResultArticle(
+                title='Lang Ayiin Ubot!',
+                reply_markup=InlineKeyboardMarkup(button),
+                input_message_content=InputTextMessageContent(text),
+            )
+        )
+    ]
+    await iq.answer(
+        update_results,
         cache_time=0,
     )

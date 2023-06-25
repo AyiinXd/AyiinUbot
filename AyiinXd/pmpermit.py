@@ -1,41 +1,40 @@
-# Ayiin - Ubot
-# Copyright (C) 2022-2023 @AyiinXd
-#
-# This file is a part of < https://github.com/AyiinXd/AyiinUbot >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
-#
-# FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
-
-
-# ========================×========================
-#            Jangan Hapus Credit Ngentod
-# ========================×========================
+import asyncio
 
 from fipper import Client, filters
+from fipper.enums import ChatType
 from fipper.types import *
 
 from pyAyiin import Ayiin, CMD_HELP, DEVS, tgbot
-from pyAyiin.dB.pmpermit_db import approve_user, is_approved
+from pyAyiin.dB.pmpermit import (
+    approve_pmpermit, 
+    disapprove_pmpermit, 
+    is_pmpermit_approved,
+)
 from pyAyiin.pyrogram import eor
 from pyAyiin.decorator import Ayiin, listen
 
-from config import *
-
 from . import *
+
+from config import *
 
 
 @listen(
-    filters.private
-    & filters.incoming
-    & ~filters.service
-    & ~filters.me
-    & ~filters.bot
-    & ~filters.via_bot
+    (
+        filters.private
+        & filters.incoming
+        & ~filters.service
+        & ~filters.me
+        & ~filters.bot
+        & ~filters.via_bot
+    ),
+    langs=True
 )
-async def pmpermit_func(client: Client, message: Message):
+async def pmpermit_func(client: Client, message: Message, _):
     user_ = message.from_user
+    me_id = client.me.id
+    pmper = Var.PM_PERMIT
+    if pmper == False:
+        return True
     if user_.is_bot:
         return
     if user_.is_self:
@@ -45,17 +44,17 @@ async def pmpermit_func(client: Client, message: Message):
     if user_.is_verified:
         return
     if user_.is_scam:
-        await message.reply_text("Scammer Tidak Diterima di PM Tuan Saya!")
+        await message.reply_text(_['permit_1'])
         await client.block_user(user_.id)
         return
     if user_.is_support:
         return
-    if is_approved(user_.id):
+    if await is_pmpermit_approved(me_id, user_.id):
         return
     if user_.id in DEVS:
-        if not is_approved(user_.id):
-            approve_user(user_.id)
-            return await message.reply("Menerima Pesan Developer")
+        if not await is_pmpermit_approved(me_id, user_.id):
+            await approve_pmpermit(me_id, user_.id)
+            return await message.reply(_['permit_2'].format(user_.mention, user_.mention))
         else:
             pass
     pm_limit = int(Var.PERMIT_LIMIT)
@@ -67,21 +66,26 @@ async def pmpermit_func(client: Client, message: Message):
         flood[str(user_.id)] += 1
     else:
         flood[str(user_.id)] = 1
-    if flood[str(user_.id)] > pm_limit:
-        await message.reply_text("SPAM TERDETEKSI, MEMBLOKIR OTOMATIS!")
+    if flood[str(user_.id)] > limits:
+        await message.reply_text(_['permit_3'])
         if str(user_.id) in OLD_MSG:
             OLD_MSG.pop(str(user_.id))
+            flood.update({user_.id: 0})
         return await client.block_user(user_.id)
     try:
         tgbot.me = await tgbot.get_me()
-        results = await client.get_inline_bot_results(tgbot.me.username, f"pmpermit_{user_.id}")
+        results = await client.get_inline_bot_results(tgbot.me.username, f"pmpermit_{me_id}_{user_.id}")
         msg_dlt = await message.reply_inline_bot_result(
             results.query_id,
             results.results[0].id,
             reply_to_message_id=message.id,
         )
-    except BaseException as e:
-        return await message.reply(f"<b>ERROR:</b> <code>{e}</code>")
+    except BaseException:
+        msg_dlt = await client.send_message(
+            user_.id,
+            MSG_PERMIT,
+            reply_to_message_id=yins.ReplyCheck(message),
+        )
     if str(user_.id) in OLD_MSG:
         try:
             await OLD_MSG[str(user_.id)].delete()
@@ -89,31 +93,160 @@ async def pmpermit_func(client: Client, message: Message):
             pass
     OLD_MSG[str(user_.id)] = msg_dlt
 
+'''
+@Ayiin(["pm"])
+async def pm_approve(client: Client, message: Message):
+    ids = client.me.id
+    commands = message.command[1]
+    cmd = message.text.split(None, 2)[2]
+    if commands == "permit":
+        if cmd == "on":
+            #if await get_pmermit(ids):
+            #    return await message.reply("PmPermit Anda Sudah Aktif Sebelumnya.")
+            await set_pmpermit(ids, True)
+            return await message.reply("PmPermit anda berhasil di aktifkan.")
+        elif cmd == "off":
+            #if not await get_pmermit(ids):
+            #    return await message.reply("PmPermit anda belum di aktifkan silahkan ketik .set_permit on")
+            await set_pmpermit(ids, False)
+            return await message.reply("PmPermit anda berhasil di matikan.")
+        else:
+            return await message.reply("Berikan saya perintah on atau off")
+    elif commands == "limit":
+        if int(cmd) or cmd.isdigit():
+            await limit_pmpermit(ids, int(cmd))
+            return await message.reply(f"PmPermit Limit berhasil di atur menjadi {int(cmd)}")
+        else:
+            return await message.reply("Mohon berikan saya angka untuk mengatur PmPermit Limit anda.")
+    elif commands == "message":
+        if cmd:
+            await message_pmpermit(ids, cmd)
+            return await message.reply(f'PmPermit Message:\n\nBerhasil di atur menjadi\n\n<code>{cmd}</code>')
+        else:
+            return await message.reply(f'Berikan saya teks untuk mengatur pesan PmPermit anda.')
+    elif commands == "media":
+        if cmd:
+            await media_pmpermit(ids, cmd)
+            return await message.reply(f'PmPermit Message Media:\n\nBerhasil di atur menjadi\n\n<code>{cmd}</code>')
+    elif commands == "block":
+        if cmd:
+            await block_message_pmpermit(ids, cmd)
+            return await message.reply(f'PmPermit Message Block:\n\nBerhasil di atur menjadi\n\n<code>{cmd}</code>')
+        else:
+            return await message.reply("berikan saya teks untuk mengatur pesan blokir PmPermit anda.")
+    else:
+        return await message.reply('Berikan saya perintah contoh .pm message hello guys')
+'''
 
-@Ayiin(["block"])
-async def block_user_func(client: Client, message: Message):
+
+@Ayiin(["ok", "a"], langs=True)
+async def pm_approve(client: Client, message: Message, _):
+    ids = client.me.id
+    if message.reply_to_message:
+        reply = message.reply_to_message
+        replied_user = reply.from_user
+        if replied_user.is_self:
+            await message.edit(_['permit_4'])
+            return
+        aname = replied_user.id
+        str(replied_user.first_name)
+        uid = replied_user.id
+        if await is_pmpermit_approved(ids, uid):
+            return await eor(message, _['permit_5'])
+        await approve_pmpermit(ids, uid)
+        xnxx = await eor(message, _['permit_6'])
+        if str(uid) in OLD_MSG and str(uid) in flood:
+            await OLD_MSG[str(uid)].delete()
+            flood[str(uid)] = 0
+        await asyncio.sleep(3)
+        await xnxx.delete()
+    else:
+        aname = message.chat
+        if not aname.type == ChatType.PRIVATE:
+            await message.edit(
+                _['permit_7']
+            )
+            return
+        aname.first_name
+        uid = aname.id
+        if await is_pmpermit_approved(ids, uid):
+            return await eor(message, _['permit_5'])
+        await approve_pmpermit(ids, uid)
+        xnxx = await eor(message, _['permit_6'])
+        try:
+            if str(uid) in OLD_MSG and str(uid) in flood:
+                await OLD_MSG[str(uid)].delete()
+                flood[str(uid)] = 0
+        except BaseException:
+            pass
+        await asyncio.sleep(3)
+        await xnxx.delete()
+
+
+@Ayiin(["tolak", "da"], langs=True)
+async def pm_disapprove(client: Client, message: Message, _):
+    ids = client.me.id
+    if message.reply_to_message:
+        reply = message.reply_to_message
+        replied_user = reply.from_user
+        if replied_user.is_self:
+            await message.edit(_['permit_4'])
+            return
+        aname = replied_user.id
+        str(replied_user.first_name)
+        uid = replied_user.id
+        if not await is_pmpermit_approved(ids, uid):
+            return await eor(message, _['permit_8'])
+        await disapprove_pmpermit(ids, uid)
+        xnxx = await eor(message, _['permit_9'])
+        await asyncio.sleep(3)
+        await xnxx.delete()
+    else:
+        aname = message.chat
+        if not aname.type == ChatType.PRIVATE:
+            await message.edit(
+                _['permit_7']
+            )
+            return
+        aname.first_name
+        uid = aname.id
+        if not await is_pmpermit_approved(ids, uid):
+            return await eor(message, _['permit_8'])
+        await disapprove_pmpermit(ids, uid)
+        xnxx = await eor(message, _['permit_9'])
+        await asyncio.sleep(3)
+        await xnxx.delete()
+
+
+@Ayiin(["block"], langs=True)
+async def block_user_func(client: Client, message: Message, _):
     if not message.reply_to_message:
-        return await eor(message, "Reply to a user's message to block.")
+        return await eor(message, _['reply'])
     user_id = message.reply_to_message.from_user.id
-    await eor(message, "Successfully blocked the user")
+    # Blocking user after editing the message so that other person can get the
+    # update.
+    await eor(message, _['permit_10'])
     await client.block_user(user_id)
 
 
-@Ayiin(["unblock"])
-async def unblock_user_func(client: Client, message: Message):
+@Ayiin(["unblock"], langs=True)
+async def unblock_user_func(client: Client, message: Message, _):
     if not message.reply_to_message:
-        return await eor(message, "Reply to a user's message to unblock.")
+        return await eor(message, _['reply'])
     user_id = message.reply_to_message.from_user.id
     await client.unblock_user(user_id)
-    await eor(message, "Successfully Unblocked the user")
+    await eor(message, _['permit_11'])
 
 
 CMD_HELP.update(
     {"pmpermit": (
         "pmpermit",
         {
-            "block": "Blokir Cucu Dajjal Yg Rusuh.",
-            "unblocl": "Lepas Blokiran Cucu Dajjal.", 
+            "ok": "Menerima Pesan PmPermit",
+            "tolak": "Menolak Pesan PmPermit",
+            "unblock [reply]": "Lepas Blokir Pengguna",
+            "block [reply]": "Memblokir Pengguna",
+            "pm [args: permit (on/off) | limit (angka) | message (text) | media (url media) | block (text)]": "Untuk mengatur PmPermit anda\n\nContoh:\n.pm permit on untuk mengaktifkan PmPermit anda\n.pm message text untuk mengatur teks PmPermit anda",
         }
     )
     }

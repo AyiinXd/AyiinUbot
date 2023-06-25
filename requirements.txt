@@ -22,7 +22,7 @@ prettytable
 psutil
 psycopg2-binary
 ptable
-py-Ayiin==0.3.3
+py-Ayiin==0.4.6
 pybase64
 pymediainfo
 pymongo[srv]
@@ -41,6 +41,7 @@ opencv-python-headless
 urllib3
 uvloop
 wget==3.2
+yins-music==0.0.7.dev3
 youtube-search-python
 yt-dlp
 zipfile38

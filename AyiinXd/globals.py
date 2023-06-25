@@ -20,32 +20,27 @@ from . import *
 
 
 @Ayiin(["Cgban"], devs=True)
-@Ayiin(["gban"])
-async def gban_user(client: Client, message: Message):
+@Ayiin(["gban"], langs=True)
+async def gban_user(client: Client, message: Message, _):
     user_id, reason = await yins.extract_user_and_reason(message, sender_chat=True)
-    if message.from_user.id != client.me.id:
-        Ayiin = await message.reply("<i>Gbanning...</i>")
-    else:
-        Ayiin = await message.edit("<i>Gbanning....</i>")
+    Ayiin = await message.reply(_['p'])
     if not user_id:
-        return await Ayiin.edit("Saya tidak dapat menemukan pengguna itu.")
+        return await Ayiin.edit(_['err_user'])
     if user_id == client.me.id:
-        return await Ayiin.edit("<i>Ngapain NgeGban diri sendiri Goblok</i> 🐽")
+        return await Ayiin.edit(_['gban_1'])
     if user_id in DEVS:
-        return await Ayiin.edit("<i>Gagal GBAN karena dia adalah Pembuat saya</i>🗿")
+        return await Ayiin.edit(_['ayiin_2'])
     if user_id:
         try:
             user = await client.get_users(user_id)
         except Exception:
-            return await Ayiin.edit("<i>Harap tentukan pengguna yang valid!</i>")
+            return await Ayiin.edit(_['err_user'])
 
     if await is_gbanned(user.id):
-        return await Ayiin.edit(
-            f"<a href=tg://user?id={user.id}>Cucu Dajjal</a> <b>ini sudah ada di daftar gbanned</b>"
-        )
+        return await Ayiin.edit(_['gban_2'].format(user.mention))
     f_chats = await yins.get_ub_chats(client)
     if not f_chats:
-        return await Ayiin.edit("<i>Anda tidak mempunyai GC yang anda admin</i> 🥺")
+        return await Ayiin.edit(_['gban_3'])
     er = 0
     done = 0
     for gokid in f_chats:
@@ -55,38 +50,32 @@ async def gban_user(client: Client, message: Message):
         except BaseException:
             er += 1
     await add_gbanned(user.id)
-    msg = (
-        r"<b>\\#GBanned_User//</b>"
-        f"\n\n<b>First Name:</b> <a href=tg://user?id={user.id}>{user.first_name}</a>"
-        f"\n<b>User ID:</b> <code>{user.id}</code>")
+    msg = _['gban_4'].format(user.mention, user.id)
     if reason:
-        msg += f"\n<b>Reason:</b> <code>{reason}</code>"
-    msg += f"\n<b>Affected To:</b> <code>{done}</code> <b>Chats</b>"
+        msg += _['admin_4'].format(reason)
+    msg += _['gban_5'].format(done)
     await Ayiin.edit(msg)
 
 
 @Ayiin(["Cungban"], devs=True)
-@Ayiin(["ungban"])
-async def ungban_user(client: Client, message: Message):
+@Ayiin(["ungban"], langs=True)
+async def ungban_user(client: Client, message: Message, _):
     user_id, reason = await yins.extract_user_and_reason(message, sender_chat=True)
-    if message.from_user.id != client.me.id:
-        Ayiin = await message.reply("<i>UnGbanning...</i>")
-    else:
-        Ayiin = await message.edit("<i>UnGbanning....</i>")
+    Ayiin = await message.reply(_['p'])
     if not user_id:
-        return await Ayiin.edit("Saya tidak dapat menemukan pengguna itu.")
+        return await Ayiin.edit(_['err_user'])
     if user_id:
         try:
             user = await client.get_users(user_id)
         except Exception:
-            return await Ayiin.edit("<i>Harap tentukan pengguna yang valid!</i>")
+            return await Ayiin.edit(_['err_user'])
 
     try:
         if not await is_gbanned(user.id):
-            return await Ayiin.edit("<i>User already ungban</i>")
+            return await Ayiin.edit(_['gban_6'])
         ung_chats = await yins.get_ub_chats(client)
         if not ung_chats:
-            return await Ayiin.edit("<i>Anda tidak mempunyai GC yang anda admin</i> 🥺")
+            return await Ayiin.edit(_['gban_3'])
         er = 0
         done = 0
         for good_boi in ung_chats:
@@ -96,31 +85,23 @@ async def ungban_user(client: Client, message: Message):
             except BaseException:
                 er += 1
         await remove_gbanned(user.id)
-        msg = (
-            r"<b>\\#UnGbanned_User//</b>"
-            f"\n\n<b>First Name:</b> <a href=tg://user?id={user.id}>{user.first_name}</a>"
-            f"\n<b>User ID:</b> <code>{user.id}</code>")
+        msg = _['gban_7'].format(user.mention, user.id)
         if reason:
-            msg += f"\n<b>Reason:</b> <code>{reason}</code>"
-        msg += f"\n<b>Affected To:</b> <code>{done}</code> <b>Chats</b>"
+            msg += _['admin_4'].format(reason)
+        msg += _['gban_5'].format(done)
         await Ayiin.edit(msg)
     except Exception as e:
-        await Ayiin.edit(f"<b>ERROR:</b> <code>{e}</code>")
+        await Ayiin.edit(_['err'].format(e))
         return
 
 
-@Ayiin(["listgban"])
-async def gbanlist(client: Client, message: Message):
+@Ayiin(["listgban"], langs=True)
+async def gbanlist(client: Client, message: Message, _):
     users = await gbanned_users()
-    Ayiin = await eor(message, "<i>Processing...</i>")
+    Ayiin = await eor(message, _['p'])
     if not users:
-        return await Ayiin.edit("Belum ada Pengguna yang Di-Gban")
-    gban_list = "<b>GBanned Users:</b>\n"
-    count = 0
-    for i in users:
-        count += 1
-        gban_list += f"<b>{count} -</b> <code>{i.sender}</code>\n"
-    return await Ayiin.edit(gban_list)
+        return await Ayiin.edit(_['gban_8'])
+    return await Ayiin.edit(_['gban_9'].format(users))
 
 
 @listen(filters.incoming & filters.group)

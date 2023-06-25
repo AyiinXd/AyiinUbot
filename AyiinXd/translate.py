@@ -19,8 +19,8 @@ from . import *
 
 
 
-@Ayiin(["tr", "tl", "translate"])
-async def translate(client: Client, message: Message):
+@Ayiin(["tr", "tl", "translate"], langs=True)
+async def translate(client: Client, message: Message, _):
     trl = Translator()
     if message.reply_to_message and (
         message.reply_to_message.text or message.reply_to_message.caption
@@ -43,7 +43,7 @@ async def translate(client: Client, message: Message):
         except ValueError as err:
             await eor(
                 message,
-                f"<b>ERROR:</b> <code>{str(err)}</code>",
+                _['err'].format(str(err)),
             )
             return
     else:
@@ -62,12 +62,12 @@ async def translate(client: Client, message: Message):
         except ValueError as err:
             await eor(
                 message,
-                "<b>ERROR:</b> <code>{}</code>".format(str(err)),
+                _['err'].format(str(err)),
             )
             return
     await eor(
         message,
-        f"<i>Diterjemahkan</i>\n<b>Dari Bahasa:</b> <code>{(await trl.detect(text))}</code>\n<b>Ke Bahasa:</b> <code>{target}</code>\n\n<i>{tekstr.text}</i>",
+        _['translate'].format((await trl.detect(text), target, tekstr.text))
     )
 
 

@@ -6,7 +6,7 @@
 # <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
 #
 # FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
+# t.me/AyiinChats & t.me/AyiinChannel
 
 
 # ========================×========================
@@ -28,6 +28,7 @@ from config import *
 
 from pyAyiin import CMD_HELP, HOSTED_ON, ayiin_ver
 from pyAyiin.assistant import callback
+from pyAyiin.dB.langs import set_lang
 from random import choice
 
 from . import *
@@ -176,10 +177,9 @@ async def changelog_callback(client, cb: CallbackQuery):
             file.write(changelog)
             file.close()
             await client.send_document(
-                msg.chat.id,
+                msg.from_user.id,
                 "output.txt",
                 caption=f"**Klik Tombol** `Update` **Untuk Mengupdate Userbot.**",
-                reply_to_message_id=yins.ReplyCheck(msg),
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -211,14 +211,24 @@ async def changelog_callback(client, cb: CallbackQuery):
 
 @callback(pattern="terima_(.*)", client_only=True)
 async def get_back(client: Client, cb: CallbackQuery):
-    user_ids = int(cb.matches[0].group(1))
-    await yins.approve_pmpermit(cb, user_ids, OLD_MSG)
+    user_id, ids = cb.matches[0].group(1).split("xd", 1)
+    await yins.approve_pmpermit(cb, int(user_id), int(ids))
+    if str(ids) in flood:
+        flood.update({ids: 0})
 
 
 @callback(pattern="tolak_(.*)", client_only=True)
 async def get_back(client: Client, cb: CallbackQuery):
-    user_ids = int(cb.matches[0].group(1))
-    await yins.disapprove_pmpermit(cb, user_ids)
+    user_id, ids = cb.matches[0].group(1).split("xd", 1)
+    await yins.disapprove_pmpermit(cb, int(user_id), int(ids))
+
+
+@callback(pattern="set_(.*)", client_only=True)
+async def set_cb_lang(client, cb: CallbackQuery):
+    lang = cb.matches[0].group(1)
+    ids = cb.from_user.id
+    await set_lang(ids, lang)
+    return await cb.answer(f'Berhasil Mengubah Bahasa.\n\nBahasa Anda Sekarang {lang}.', show_alert=True)
 
 
 # Callback Create Ubot
@@ -262,7 +272,7 @@ async def added_to_group_msg(bot, cq):
             else:
                 pass
     except Exception as e:
-        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChat".format(str(e)))
+        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChats".format(str(e)))
     await cq.message.delete()
 
 
@@ -307,7 +317,7 @@ async def added_to_group_msg(bot, cq):
             else:
                 pass
     except Exception as e:
-        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChat".format(str(e)))
+        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChats".format(str(e)))
     await cq.message.delete()
 
 
@@ -351,7 +361,7 @@ async def added_to_group_msg(bot, cq):
             else:
                 pass
     except Exception as e:
-        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChat".format(str(e)))
+        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChats".format(str(e)))
     await cq.message.delete()
 
 
@@ -395,7 +405,7 @@ async def added_to_group_msg(bot, cq):
             else:
                 pass
     except Exception as e:
-        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChat".format(str(e)))
+        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChats".format(str(e)))
     await cq.message.delete()
 
 
@@ -439,7 +449,7 @@ async def added_to_group_msg(bot, cq):
             else:
                 pass
     except Exception as e:
-        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChat".format(str(e)))
+        return await cq.message.reply("[ERROR]\n{}\nSilahkan Teruskan Pesan Ini Ke @AyiinChats".format(str(e)))
     await cq.message.delete()
 
 

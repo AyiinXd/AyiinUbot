@@ -7,15 +7,15 @@
     "stack": "heroku-22",
     "env": {
       "API_ID": {
-        "description": "Dapatkan API KEY di Grup » https://t.me/AyiinChat » Lalu ketik /get api atau di web my.telegram.org Masukan yg APP ID Telegram",
+        "description": "Dapatkan API KEY di Grup » https://t.me/AyiinChats » Lalu ketik /get api atau di web my.telegram.org Masukan yg APP ID Telegram",
         "required": true
       },
       "API_HASH": {
-        "description": "Dapatkan API Hash di Grup » https://t.me/AyiinChat » Lalu ketik /get api atau di web my.telegram.org",
+        "description": "Dapatkan API Hash di Grup » https://t.me/AyiinChats » Lalu ketik /get api atau di web my.telegram.org",
         "required": true
       },
        "STRING_1": {
-        "description": "Dapatkan String Session di Grup » https://t.me/AyiinChat » Lalu ketik /get string",
+        "description": "Dapatkan String Session di Grup » https://t.me/AyiinChats » Lalu ketik /get string",
         "required": true
       },
       "BOT_TOKEN": {
@@ -23,7 +23,7 @@
         "required": true
       },
       "MONGO_URI": {
-        "description": "Dapatkan Link MongoDB di Grup » https://t.me/AyiinChat » Lalu ketik /get link",
+        "description": "Dapatkan Link MongoDB di Grup » https://t.me/AyiinChats » Lalu ketik /get link",
         "required": true
       },
       "LOG_CHAT": {

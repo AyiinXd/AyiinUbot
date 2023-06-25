@@ -6,7 +6,7 @@
 # <https://www.github.com/AyiinXd/Ayiin-Userbot/blob/main/LICENSE/>.
 #
 # FROM Ayiin-Userbot <https://github.com/AyiinXd/Ayiin-Userbot>
-# t.me/AyiinXdSupport & t.me/AyiinSupport
+# t.me/AyiinXdSupport & t.me/AyiinChannel
 
 
 # ========================×========================
@@ -31,18 +31,18 @@ from config import Var
 from . import yins
 
 
-@Ayiin(["rbg", "removebg", "remove_bg"])
-async def kbg(client: Client, message: Message):
+@Ayiin(["rbg", "removebg", "remove_bg"], langs=True)
+async def kbg(client: Client, message: Message, _):
     if Var.REM_BG_API_KEY is None:
         await eor(
             message,
-            "Remove.Bg Api Token hilang! Tambahkan ke vars Heroku atau .env."
+            _['img_1']
         )
         return
     if message.reply_to_message:
         message.reply_to_message.id
         reply_message = message.reply_to_message
-        xx = await eor(message, "<i>Memproses...</i>")
+        xx = await eor(message, _['p'])
         try:
             if isinstance(
                 reply_message.media, raw.types.MessageMediaPhoto
@@ -51,13 +51,13 @@ async def kbg(client: Client, message: Message):
                     reply_message,
                     Var.TEMP_DOWNLOAD_DIRECTORY
                 )
-                await xx.edit("<i>Menghapus latar belakang dari gambar ini...</i>")
+                await xx.edit(_['img_2'])
                 output_file_name = await ReTrieveFile(downloaded_file_name)
                 os.remove(downloaded_file_name)
             else:
-                await xx.edit("<i>Bagaimana cara menghapus latar belakang ini ?</i>")
+                await xx.edit(_['img_3'])
         except Exception as e:
-            await xx.edit(f"ERROR: {(str(e))}")
+            await xx.edit(_['err'].format(str(e)))
             return
         try:
             client.me = await client.get_me()
@@ -76,12 +76,12 @@ async def kbg(client: Client, message: Message):
                 await xx.delete()
         else:
             await xx.edit(
-                "<b>Kesalahan (Kunci API tidak valid, saya kira ?)</b>\n<i>{}</i>".format(
+                _['err'].format(
                     output_file_name.content.decode("UTF-8")
                 ),
             )
     else:
-        return await message.reply("Silahkan Balas Ke Gambar")
+        return await message.reply(_['reply_photo'])
 
 
 # this method will call the API, and return in the appropriate format
@@ -116,12 +116,12 @@ async def ReTrieveURL(input_url):
     )
 
 
-@Ayiin(["blur"])
-async def blur_image(client: Client, message: Message):
+@Ayiin(["blur"], langs=True)
+async def blur_image(client: Client, message: Message, _):
     ureply = message.reply_to_message
-    xd = await message.reply("<i>Memproses...</i>")
+    xd = await message.reply(_['p'])
     if not ureply.media:
-        return await xd.edit("Balas Ke Gambar Ngentod")
+        return await xd.edit(_['reply_photo'])
 
     yinsxd = await client.download_media(ureply, Var.TEMP_DOWNLOAD_DIRECTORY)
     if yinsxd.endswith(".tgs"):
@@ -136,7 +136,7 @@ async def blur_image(client: Client, message: Message):
         stderr.decode().strip()
         stdout.decode().strip()
     else:
-        img = cv2.VideoCapture(yins)
+        img = cv2.VideoCapture(yinsxd)
         heh, lol = img.read()
         cv2.imwrite("yin.png", lol)
         file = "yin.png"
@@ -154,12 +154,12 @@ async def blur_image(client: Client, message: Message):
     os.remove(yinsxd)
 
 
-@Ayiin(["negative"])
-async def yinsxd(client: Client, message: Message):
+@Ayiin(["negative"], langs=True)
+async def yinsxd(client: Client, message: Message, _):
     ureply = message.reply_to_message
-    ayiin = await message.reply("Memproses...")
+    ayiin = await message.reply(_['p'])
     if not ureply.media:
-        return await ayiin.edit("Balas Ke Gambar Ngentod")
+        return await ayiin.edit(_['reply_photo'])
 
     ayiinxd = await client.download_media(ureply, Var.TEMP_DOWNLOAD_DIRECTORY)
     if ayiinxd.endswith(".tgs"):
@@ -192,12 +192,12 @@ async def yinsxd(client: Client, message: Message):
     os.remove(ayiinxd)
 
 
-@Ayiin(["miror"])
-async def kntl(client: Client, message: Message):
+@Ayiin(["miror"], langs=True)
+async def kntl(client: Client, message: Message, _):
     ureply = message.reply_to_message
-    kentu = await message.reply("<i>Memproses</i>")
+    kentu = await message.reply(_['p'])
     if not ureply.media:
-        return await kentu.edit("Balas Ke Gambar Tod")
+        return await kentu.edit(_['reply_photo'])
 
     xnxx = await client.download_media(ureply, Var.TEMP_DOWNLOAD_DIRECTORY)
     if xnxx.endswith(".tgs"):

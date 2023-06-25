@@ -6,16 +6,13 @@
 # <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
 #
 # FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
+# t.me/AyiinChats & t.me/AyiinChannel
 
 
 # ========================×========================
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
 
-import os
-
-from fipper.enums import ParseMode
 from git import Repo
 
 from pyAyiin import Ayiin, CMD_HELP, tgbot
@@ -23,9 +20,9 @@ from pyAyiin import Ayiin, CMD_HELP, tgbot
 from . import *
 
 
-@Ayiin(["update"])
-async def updater(client, msg):
-    xx = await eor(msg, "<code>Processing...</code>")
+@Ayiin(["update"], langs=True)
+async def updater(client, msg, _):
+    xx = await eor(msg, _['p'])
     m = await yins.updater()
     repo = Repo.init()
     branch = repo.active_branch
@@ -33,22 +30,9 @@ async def updater(client, msg):
         repo, f"HEAD..upstream/{branch}"
     )
     if m:
-        if changelog:
-            if len(changelog) > 4096:
-                await xx.edit("<b>Changelog terlalu besar, dikirim sebagai file.</b>")
-                file = open("output.txt", "w+")
-                file.write(changelog)
-                file.close()
-                await client.send_document(
-                    msg.chat.id,
-                    "output.txt",
-                    caption=f"**Klik Tombol** `Update` **Untuk Mengupdate Userbot.**",
-                    reply_to_message_id=yins.ReplyCheck(msg),
-                )
-                os.remove("output.txt")
         try:
             tgbot.me = await tgbot.get_me()
-            results = await client.get_inline_bot_results(tgbot.me.username, f"in_update-{tl_chnglog}")
+            results = await client.get_inline_bot_results(tgbot.me.username, f"in_update")
             await msg.reply_inline_bot_result(
                 results.query_id,
                 results.results[0].id,
@@ -56,11 +40,10 @@ async def updater(client, msg):
             )
             await xx.delete()
         except BaseException as e:
-            return await eod(msg, f"<b>ERROR:</b> <code>{e}</code>")
+            return await eod(msg, _['err'].format(e))
     else:
         await xx.edit(
-            f'<strong>Bot Lu Udah Versi Terbaru</strong><code> Dengan </code><strong><a href="https://github.com/AyiinXd/AyiinUbot/tree/{branch}">[{branch}]</a></strong>',
-            parse_mode=ParseMode.HTML,
+            _['update'].format(branch, branch),
             disable_web_page_preview=True,
         )
 

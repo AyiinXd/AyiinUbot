@@ -1,0 +1,176 @@
+nama : English
+asli: English
+penulis:
+  - AyiinXd
+
+# General Strings
+p : "<code>Processing...</code>"
+err : "[ ᴇʀʀᴏʀ ] - {}"
+err_media : "[ ᴇʀʀᴏʀ ] - Maaf tidak dapat mengirim media grup ini"
+err_user : "[ ᴇʀʀᴏʀ ] - Saya tidak dapat menemukan pengguna tersebut."
+link : "Provide the link you want to search for"
+reply : "Reply to messages to execute commands..."
+reply_media : "<i>Please Reply to Media Foto/GIF/Sticker!</i>"
+reply_photo : "Please Reply To Image"
+reply_sticker : "<i>Please Reply To Sticker Message!</i>"
+size_big : "<b>Changelog too big, sent as file.</b>"
+upload : "Uploading..."
+download : "Downloading..."
+
+# String Ayiin
+ayiin_1: "<b>[ ᴅɪᴄᴋ ]</b> - That Command Is Forbidden In This Group Chat Is Stupid..."
+ayiin_2: "<b>[ ᴅɪᴄᴋ ]</b> - The Command Was Canceled Because He Is a Developer..."
+
+# PLUGINS - Admins
+admin_1 : "Reply to a photo to set it !"
+admin_2 : "I can't find that user."
+admin_3 : "I can't ban myself."
+admin_4 : "<b>Banned User:</b> {}\n<b>Banned By:</b> {}\n"
+admin_5 : "Reason: {}"
+admin_6 : "You Don't Have Admin Rights For It!!!"
+admin_7 : "Stupid He Is Owner Group Chat!!!"
+admin_8 : "Your cannot unbanned a channel"
+admin_9 : "Provide a username or reply to a user's message to unban"
+admin_10 : "Unbanned! {}"
+admin_11 : "Unpinned This Message."
+admin_12 : "Pinned This Message."
+admin_13 : "I can't mute myself."
+admin_14 : "<b>Muted User:</b> {}\n<b>Muted By:</b> {}\n"
+admin_15 : "Unmuted! {}"
+admin_16 : "I can't kick myself"
+admin_17 : "I can't kick an admin, You know the rules, so do i."
+admin_18 : "<b>Kicked User:</b> {}\n<b>Kicked By:</b> {}"
+admin_19 : "Fully Promoted! {}"
+admin_20 : "Promoted! {}"
+admin_21 : "I can't demote myself"
+admin_22 : "Demoted! {}"
+
+# PLUGIN - Carbon
+carbon_1 : "**Setting up Carbons...**"
+carbon_2 : "Carbonized By {}"
+
+# PLUGIN - Gcast
+gcast_1 : "<b>Successfully Sending Forwarded Message...\n\nSuccess To</b> <code>{}</code> <b>Group\nFailed To</b> <code>{}</code> <b>Group</b>"
+gcast_2 : "<b>Successfully Sent Broadcast Message...\n\nSuccess To</b> <code>{}</code> <b>Group\nFailed To</b> <code>{}</code> <b>Group</b>"
+gcast_3 : "<b>Successfully Sent Message...\n\nSuccess To</b> <code>{}</code> <b>User\nFailed To</b> <code>{}</code> <b>User</b>"
+gcast_4 : "Successfully Added {} To Database"
+gcast_5 : "Chat ID : {}\n\nAlready in Database"
+gcast_6 : "Successfully Delete {} from Database"
+gcast_7 : "Chat ID : {}\n\nNot in Database"
+gcast_8 : "List BLACKLIST_GCAST you are currently empty\n\nPlease use `.addbl chat_id` or type `.addbl` in the group..."
+gcast_9 : "BLACKLIST_GCAST In {} GROUP\n\nList:\n⇒ {}"
+
+# PLUGIN - Global
+gban_1 : "<b>Can't do that to Yourself</b>"
+gban_2 : "{} <b>already on the global banned list</b>"
+gban_3 : "<i>You don't have a chat group that you admin</i> 🥺"
+gban_4 : "<b>#GBanned_User</b>\n\n<b>Name:</b> {}</a>\n<b>User:</b> <code>{}</code>"
+gban_5 : "\n<b>Affected to:</b> <code>{}</code> <b>Chats</b>"
+gban_6 : "<b>User Has Been Unbanned Globally</b>"
+gban_7 : "<b>#UnGbanned_User</b>\n\n<b>Name:</b> {}\n<b>User:</b> <code>{}</code>"
+gban_8 : "No Users have been Banned yet"
+gban_9 : "#DATABASE_GBAN\n\n{} The user has been global baned"
+
+# PLUGIN - Help
+help_1 : "**Module {} Not known**\n\n**Please Type {}help to see the module.**"
+help_2 : "\n\n☞  **Group** : @AyiinChatss\n☞  **Notes** :  `.help gcast` **To View Gcast Commands**"
+
+# PLUGIN - Image
+img_1 : "Remove.Bg Api Lost tokens! Add to Heroku vars or .env."
+img_2 : "<i>Remove the background from this image...</i>"
+img_3 : "<i>How do I remove this background ?</i>"
+
+# PLUGIN - Log
+log_1 : "<i>I only understand on or off</i>"
+log_2 : "<i>PM Log Successfully Disabled</i>"
+log_3 : "<i>PM Log Successfully Enabled</i>"
+log_4 : "<i>Group Log Successfully Disabled</i>"
+log_5 : "<i>Group Log Successfully Enabled</i>"
+log_6 : "<i>Log Successfully Disabled</i>"
+log_7 : "<i>Log Successfully Enabled</i>"
+log_8 : "<i>Use .log [pm/gc/all] [on/off]</i>\n\nPm: Personal Message\nGc: Group Chat\nAll: Group Chat and Personal Message"
+
+# PLUGIN - Paste
+paste_1 : "Only Text And Documents That I Can Paste."
+paste_2 : "You can only paste files that are smaller than 40KB."
+paste_3 : "Only text files can be pasted."
+paste_4 : "• <b>Pasted to SpaceBin :</b> <a href='{}'>SpaceBin</a>'\n• <b>Raw Url :</b> <a href='{}'>Raw</a>"
+
+# PLUGIN - PmPermit
+permit_1 : "Fraudster Detected!\nAuto Block!!!"
+permit_2 : "Detected {} is Developer\nAutomatically Receiving Messages {}"
+permit_3 : "Spam Detected!\nBlock User Automatically"
+permit_4 : "You can't do that to yourself."
+permit_5 : "This User Already Exists In The Database"
+permit_6 : "Your Message Has Been Received..."
+permit_7 : "You're not currently in PM and you haven't replied to someone's message."
+permit_8 : "This User Is Not In The Database"
+permit_9 : "Your Message Has Been Rejected..."
+permit_10 : "Successfully Blocked User!!!"
+permit_11 : "Successfully Unblocked User"
+
+# PLUGIN - Purge
+purge : "**Successfully Delete** `{}` **Message.**"
+
+# PLUGIN - Sticker
+sticker_1 : "<b>The sticker has no Name!</b>"
+sticker_2 : "<code>Create a New Sticker Pack {} Because the Sticker Pack Is Full</code>"
+sticker_3 : "<b>YOUR STICKER IS READY</b>\n<b>     ╭✠━━━━❖━━━━✠╮</b>\n            <a href=t.me/addstickers/{}>TAKE</a>\n<b>     ╰✠━━━━❖━━━━✠╯</b>\n<b>To Use Stickers</b>"
+sticker_4 : "<b>Failed to Add Sticker, Use @Stickers Bot To Add Your Sticker.</b>"
+sticker_5 : "<i>Create a New Sticker Pack</i>"
+sticker_6 : "Please Type <code>^mmf text<code>"
+
+# PLUGIN - Telegraph
+telegraph : "<b>Successfully uploaded to</b> <a href='https://telegra.ph/{}'>Telegraph</a>"
+
+# PLUGIN - Tiktok
+tiktok_1 : "Uploaded By: {}"
+tiktok_2 : "Sorry failed to find the link provided..."
+
+# PLUGIN - Translate
+translate : "<i>Translated</i>\n<b>From Language:</b> <code>{}</code>\n<b>Go to Language:</b> <code>{}</code>\n\n<i>{}</i>"
+
+# PLUGIN - Update
+update : '<b>Your Bot is Already Versioned Latest With Branch <a href="https://github.com/AyiinXd/AyiinUbot/tree/{}">[{}]</a></b>'
+
+# PLUGIN - Vars
+vars_1 : "Please provide Key and Value\n\nExample:\n\n<code>.set_var PERMIT_PIC https://telegra.ph//file/15c6b7170e17451d5af7d.jpg</code>"
+vars_2 : "Adding Database\n\n<b>Key =</b> <code>{}</code>\n<b>Value =</b> <code>{}</code>"
+vars_3 : "Give me Keyword to remove var from Database"
+vars_4 : "Successfully deleted key.\n\nVars : {}"
+vars_5 : "Give me some keys to get var values ​​from database..."
+vars_6 : "<b>Database Found:</b>\n\n<b>Key</b> = <code>{}</code>\n<b>Value</b> = <code>{}</code>"
+vars_7 : "This var is not in my database..."
+
+# PLUGIN - Play
+play_1 : "🔄 Processing... Please Wait!"
+play_2 : "▶ <b>Playing Songs</b>\n\n🏷 <b>Title:</b> <a href='{}'>{}</a>\n⏱ <b>Durastion:</b> <code>{}</code>\n💬 <b>Chat ID:</b> <code>{}</code>\n🎧 <b>Requested:</b> {}"
+play_3 : "<b>#⃣ Adding Songs {}</b>\n\n🏷 <b>Title:</b> <a href='{}'>{}</a>\n⏱ <b>Duration:</b> <code>{}</code>\n💬 <b>Chat ID:</b> <code>{}</code>\n🎧 <b>Requested:</b> {}"
+play_4 : "Please Give me the title of the song..."
+play_5 : "<code>Sorry I didn't find anything...</code>"
+play_6 : "<b>Successfully Stopped Stream...</b>"
+play_7 : "I can't find anything playing."
+play_8 : "<b>Not Playing Anything!</b>"
+play_9 : "<b>Empty Queue, Left voice chat</b>"
+play_10 : "<b>⏭ Pass</b>\n<b>🎧 Now Playing</b> - <a href='{}'>{}</a> | <code>{}</code>"
+play_11 : "<b>🗑️ Removes the following songs from the Queue: -</b>"
+play_12 : "🎧 Played now: \n<a href='{}'>{}</a> | {}"
+play_13 : "🎧 Played now: \n<a href='{}'>{}</a> | {}\n\n⏯ Song list:"
+play_14 : "🎧 <b>Voicechat Paused!</b>"
+play_15 : "🎧 <b>Voicechat Resumed!</b>"
+
+# PLUGIN - VcTools
+vctol_1 : "<b>Turn on Voice Chat...</b>"
+vctol_2 : "Successfully Initiated Voice Chat\n\nTitle: {}\nChat: {}\nChat ID: {}"
+vctol_3 : "Successfully Initiated Voice Chat\n\nChat: {}\nChat ID: {}"
+vctol_4 : "<i>Successfully Stopped Voice Chat</i>\n<b>Chat ID:</b> <code>{}</code>"
+vctol_5 : "⍟ {}\n\n❏ **Successfully Joined Voice Chat**\n└ **Chat ID:** `{}`"
+vctol_6 : "⍟ {}\n\n❏ **Successfully Left Voice Chat**\n└ **Chat ID:** `{}`"
+
+# PLUGIN - Xxx
+x_1 : "Found some big boobs for you 😂"
+x_2 : "Here's a picture of the boobs I got sir 😂"
+
+# PLUGIN - ?????
+back : "ᴋᴇᴍʙᴀʟɪ"
+lang : "List of Available Languages."

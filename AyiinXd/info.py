@@ -6,7 +6,7 @@
 # <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
 #
 # FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
+# t.me/AyiinChats & t.me/AyiinChannel
 
 
 # ========================×========================
@@ -23,20 +23,21 @@ from pyAyiin.pyrogram import eod, eor
 from . import *
 
 
-@Ayiin(["whois", "info"])
-async def check_user(client: Client, msg: Message):
-    xx = await eor(msg, "**Mencari Informasi Pengguna...**")
+@Ayiin(["whois", "info"], langs=True)
+async def check_user(client: Client, msg: Message, _):
+    xx = await eor(msg, _['p'])
     try:
         users = msg.text.split(" ", 1)[1]
         try:
             target = await client.get_users(users)
         except PeerIdInvalid:
-            return await eod(xx, "**Maaf pengguna tidak ditemukan..**")
+            return await eod(xx, _["err_user"])
         name = target.first_name + " " + target.last_name if target.last_name else target.first_name
         uname = f"@{target.username}" if target.username else "⊗"
         out_str = (
             f"""
 **⇒ Informasi Pengguna ⇐**
+
 **Name:** `{name}`
 **Username:** {uname}
 **User ID:** `{target.id}`

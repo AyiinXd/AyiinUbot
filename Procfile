@@ -1,1 +1,0 @@
-ayiin: bash start

@@ -27,16 +27,11 @@ from pyAyiin.pyrogram import eor
 from . import *
 
 
-@Ayiin(["q", "quotly"])
-async def quotly(client: Client, message: Message):
-    '''
-    ========================×========================
-            Copyright (C) 2023-present AyiinXd
-    ========================×========================
-    '''
+@Ayiin(["q", "quotly"], langs=True)
+async def quotly(client: Client, message: Message, _):
     if not message.reply_to_message:
-        return await message.reply_text("**Mohon Balas ke Pesan**")
-    msg = await message.reply_text("`Processing...`")
+        return await message.reply_text(_['reply'])
+    msg = await message.reply_text(_['p'])
     reply = message.reply_to_message
     cmd = yins.get_cmd(message)
     await msg.delete()
@@ -54,11 +49,11 @@ async def quotly(client: Client, message: Message):
             return
 
 
-@Ayiin(["kang", "tikel"])
-async def kang(client: Client, message: Message):
+@Ayiin(["kang", "tikel"], langs=True)
+async def kang(client: Client, message: Message, _):
     user = client.me
     replied = message.reply_to_message
-    Ayiin = await eor(message, "<i>Boleh juga ni stickernya colong ahh...</i>")
+    Ayiin = await eor(message, _['p'])
     media_ = None
     emoji_ = None
     is_anim = False
@@ -88,7 +83,7 @@ async def kang(client: Client, message: Message):
             ff_vid = True
         elif replied.sticker:
             if not replied.sticker.file_name:
-                await Ayiin.edit("<b>Stiker tidak memiliki Nama!</b>")
+                await Ayiin.edit(_['sticker_1'])
                 return
             emoji_ = replied.sticker.emoji
             is_anim = replied.sticker.is_animated
@@ -102,9 +97,9 @@ async def kang(client: Client, message: Message):
         else:
             await Ayiin.edit("<i>File Tidak Didukung</i>")
             return
-        media_ = await client.download_media(replied, file_name="AyiinXd/resources/")
+        media_ = await client.download_media(replied, file_name="assets/")
     else:
-        await Ayiin.edit("<i>Silahkan Reply ke Media Foto/GIF/Sticker!</i>")
+        await Ayiin.edit(_['reply_media'])
         return
     if media_:
         args = yins.get_cmd(message)
@@ -162,9 +157,7 @@ async def kang(client: Client, message: Message):
                 if is_video:
                     packname += f"_video{pack}"
                     packnick += f" (Video){pack}"
-                await Ayiin.edit(
-                    f"<code>Membuat Sticker Pack Baru {pack} Karena Sticker Pack Sudah Penuh</code>"
-                )
+                await Ayiin.edit(_['sticker_2'].format(pack))
                 continue
             break
         if exist is not False:
@@ -174,7 +167,7 @@ async def kang(client: Client, message: Message):
                 await client.unblock_user("stickers")
                 await client.send_message("stickers", "/addsticker")
             except Exception as e:
-                return await Ayiin.edit(f"<b>ERROR:</b> <code>{e}</code>")
+                return await Ayiin.edit(_['err'].format(e))
             await asyncio.sleep(2)
             await client.send_message("stickers", packname)
             await asyncio.sleep(2)
@@ -189,11 +182,7 @@ async def kang(client: Client, message: Message):
                 if is_video:
                     packname += "_video"
                     packnick += " (Video)"
-                await Ayiin.edit(
-                    "<code>Membuat Sticker Pack Baru "
-                    + str(pack)
-                    + " Karena Sticker Pack Sudah Penuh</code>"
-                )
+                await Ayiin.edit(_['sticker_2'].format(str(pack)))
                 await client.send_message("stickers", packname)
                 await asyncio.sleep(2)
                 if await get_response(message, client) == "Invalid pack selected.":
@@ -216,15 +205,7 @@ async def kang(client: Client, message: Message):
                     await asyncio.sleep(2)
                     await client.send_message("Stickers", packname)
                     await asyncio.sleep(2)
-                    await Ayiin.edit(
-                        f"""
-<b>STICKER LU UDAH JADI TOD</b>
-<b>     ╭✠━━━━❖━━━━✠╮</b>
-            <a href=t.me/addstickers/{packname}>AMBIL TOD</a>
-<b>     ╰✠━━━━❖━━━━✠╯</b>
-<b>Untuk Menggunakan Stickers</b>
-"""
-                    )
+                    await Ayiin.edit(_['sticker_3'].format(packname))
                     return
             await client.send_document("stickers", media_)
             await asyncio.sleep(2)
@@ -232,15 +213,13 @@ async def kang(client: Client, message: Message):
                 await get_response(message, client)
                 == "Sorry, the file type is invalid."
             ):
-                await Ayiin.edit(
-                    "<b>Gagal Menambahkan Sticker, Gunakan @Stickers Bot Untuk Menambahkan Sticker Anda.</b>"
-                )
+                await Ayiin.edit(_['sticker_4'])
                 return
             await client.send_message("Stickers", emoji_)
             await asyncio.sleep(2)
             await client.send_message("Stickers", "/done")
         else:
-            await Ayiin.edit("<i>Membuat Sticker Pack Baru</i>")
+            await Ayiin.edit(_['sticker_5'])
             try:
                 await client.send_message("Stickers", cmd)
             except YouBlockedUser:
@@ -255,9 +234,7 @@ async def kang(client: Client, message: Message):
                 await get_response(message, client)
                 == "Sorry, the file type is invalid."
             ):
-                await Ayiin.edit(
-                    "<b>Gagal Menambahkan Sticker, Gunakan @Stickers Bot Untuk Menambahkan Sticker Anda.</b>"
-                )
+                await Ayiin.edit(_['sticker_4'])
                 return
             await client.send_message("Stickers", emoji_)
             await asyncio.sleep(2)
@@ -270,15 +247,7 @@ async def kang(client: Client, message: Message):
             await asyncio.sleep(2)
             await client.send_message("Stickers", packname)
             await asyncio.sleep(2)
-        await Ayiin.edit(
-            f"""
-<b>STICKER LU UDAH JADI TOD</b>
-<b>     ╭✠━━━━❖━━━━✠╮</b>
-            <a href=t.me/addstickers/{packname}>AMBIL TOD</a>
-<b>     ╰✠━━━━❖━━━━✠╯</b>
-<b>Untuk Menggunakan Stickers</b>
-"""
-        )
+        await Ayiin.edit(_['sticker_3'].format(packname))
         if os.path.exists(str(media_)):
             os.remove(media_)
 
@@ -287,12 +256,12 @@ async def get_response(message, client):
     return [x async for x in client.get_chat_history("Stickers", limit=1)][0].text
 
 
-@Ayiin(["tiny"])
-async def tinying(client: Client, message: Message):
+@Ayiin(["tiny"], langs=True)
+async def tinying(client: Client, message: Message, _):
     reply = message.reply_to_message
     if not (reply and (reply.media)):
-        return await eor(message, "<i>Silahkan Balas Ke Pesan Sticker!</i>")
-    Xd = await eor(message, "<i>Processing . . .</i>")
+        return await eor(message, _['reply_sticker'])
+    Xd = await eor(message, _['p'])
     ik = await client.download_media(reply)
     im1 = Image.open("assets/blank.png")
     if ik.endswith(".tgs"):
@@ -364,20 +333,20 @@ async def tinying(client: Client, message: Message):
     os.remove(ik)
 
 
-@Ayiin(["mmf", "memify"])
-async def memify(client: Client, message: Message):
+@Ayiin(["mmf", "memify"], langs=True)
+async def memify(client: Client, message: Message, _):
     if not message.reply_to_message_id:
-        await eor(message, "<i>Balas ke pesan foto atau sticker!</i>")
+        await eor(message, _['reply_media'])
         return
     reply_message = message.reply_to_message
     if not reply_message.media:
-        await eor(message, "<i>Harap Balas ke foto atau sticker!</i>")
+        await eor(message, _['reply_media'])
         return
     file = await client.download_media(reply_message)
-    Xd = await eor(message, "<i>Processing . . .</i>")
+    Xd = await eor(message, _['p'])
     text = yins.get_cmd(message)
     if len(text) < 1:
-        return await Xd.edit(f"Harap Ketik <code>^mmf text<code>")
+        return await Xd.edit(_['sticker_6'])
     meme = await yins.add_text_img(file, text, "assets/default.ttf")
     await asyncio.gather(
         Xd.delete(),
@@ -390,10 +359,10 @@ async def memify(client: Client, message: Message):
     os.remove(meme)
 
 
-@Ayiin(["get", "getsticker", "mtoi"])
-async def stick2png(client: Client, message: Message):
+@Ayiin(["getsticker", "mtoi"], langs=True)
+async def stick2png(client: Client, message: Message, _):
     try:
-        await message.edit("<i>Downloading . . .</i>")
+        await message.edit(_['download'])
 
         path = await message.reply_to_message.download()
         with open(path, "rb") as f:
@@ -412,9 +381,7 @@ async def stick2png(client: Client, message: Message):
             ),
         )
     except Exception as e:
-        return await client.send_message(
-            message.chat.id, f"<b>INFO:</b> <code>{e}</code>", reply_to_message_id=yins.ReplyCheck(message)
-        )
+        return await message.reply(_['err'].format(str(e)))
 
 
 CMD_HELP.update(

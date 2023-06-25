@@ -6,7 +6,7 @@
 # <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
 #
 # FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
+# t.me/AyiinChats & t.me/AyiinChannel
 
 
 # ========================×========================
@@ -107,7 +107,7 @@ async def fonts(client: Client, msg: Message):
         "<b>• bubbles » Ⓐ︎Ⓨ︎Ⓘ︎Ⓘ︎Ⓝ︎</b>\n"
         "<b>• bold » 𝗔𝗬𝗜𝗜𝗡</b>\n"
         "<b>• bolditalic » 𝘼𝙔𝙄𝙄𝙉</b>\n\n"
-        "<b>   ✧ 𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ✧</b>"
+        "<b>   ✧ 𝙰𝚈𝙸𝙸𝙽 𝚄𝙱𝙾𝚃 ✧</b>"
     )
 
 

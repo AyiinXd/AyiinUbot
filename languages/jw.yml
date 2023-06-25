@@ -1,0 +1,172 @@
+nama : Jawa
+asli: Indonesia
+penulis: 
+  - AyiinXd
+
+# String Umum
+p : "<code>pangolahan...</code>"
+err : "[ ᴇʀʀᴏʀ ] - {}"
+err_media : "[ ᴇʀʀᴏʀ ] - Nyuwun pangapunten ora bisa ngirim media grup iki"
+err_user : "[ ᴇʀʀᴏʀ ] - Aku ora bisa nemokake pangguna."
+link : "Nyedhiyakake link sing pengin digoleki"
+reply : "Mbales pesen kanggo nglakokaké printah..."
+reply_media : "<i>Mangga Mbales Media Foto/GIF/Stiker!</i>"
+reply_photo : "Mangga Wangsulan Gambar"
+reply_sticker : "<i>Mangga Mbales Pesen Stiker!</i>"
+size_big : "<b>Changelog gedhe banget, dikirim minangka file.</b>"
+upload : "Ngunggah..."
+download : "Ngundhuh..."
+
+# String Ayiin
+ayiin_1: "<b>[ ᴋᴏɴᴛᴏʟ ]</b> - Pesenan kasebut Dilarang Ing Obrolan Grup Iki..."
+ayiin_2: "<b>[ ᴋᴏɴᴛᴏʟ ]</b> - Pesenan kasebut dibatalake amarga dheweke dadi pangembang..."
+
+# PLUGIN - Admins
+admin_1 : "Mbales foto kanggo nyetel!"
+admin_2 : "Aku ora bisa nemokake pangguna."
+admin_3 : "Aku ora bisa ngalangi dhewe."
+admin_4 : "<b>Pangguna sing dilarang:</b> {}\n<b>Dilarang dening:</b> {}\n"
+admin_5 : "Alesan: {}"
+admin_6 : "Sampeyan Ora Duwe Hak Admin Kanggo Iku!!!"
+admin_7 : "Bodho Dheweke Sing Pemilik Obrolan Grup!!!"
+admin_8 : "Sampeyan ora bisa mbukak blokir saluran"
+admin_9 : "Nyedhiyakake jeneng pangguna utawa mbales pesen pangguna kanggo mbukak blokir"
+admin_10 : "Batalke larangan! {}"
+admin_11 : "Copot Semat Pesen Iki."
+admin_12 : "Pinning Pesen Iki."
+admin_13 : "Aku ora bisa bisu dhewe."
+admin_14 : "<b>Pangguna bisu:</b> {}\n<b>Dibuwang dening:</b> {}\n"
+admin_15 : "Ora bisu! {}"
+admin_16 : "Aku ora bisa nendhang dhewe."
+admin_17 : "Aku ora bisa nendhang admin, Sampeyan ngerti aturan, aku uga ngerti."
+admin_18 : "<b>Panganggo Kicked:</b> {}\n<b>Ditendhang dening:</b> {}"
+admin_19 : "Dipromosikan kanthi lengkap! {}"
+admin_20 : "dipun promosiaken! {}"
+admin_21 : "Aku ora bisa ngasorake awakku"
+admin_22 : "Diturunake! {}"
+
+# PLUGIN - Gcast
+gcast_1 : "<b>Kasil Ngirim Pesen Diterusake...\n\nKasil Kanggo</b> <code>{}</code> <b>Kelompok\nGagal Kanggo</b> <code>{}</code> <b>Kelompok</b>"
+gcast_2 : "<b>Kasil Ngirim Pesen Siaran...\n\nKasil Kanggo</b> <code>{}</code> <b>Kelompok\nGagal Kanggo</b> <code>{}</code> <b>Kelompok</b>"
+gcast_3 : "<b>Kasil Ngirim Pesen...\n\nKasil Kanggo</b> <code>{}</code> <b>User\nGagal Kanggo</b> <code>{}</code> <b>panganggo</b>"
+gcast_4 : "Kasil ditambahake {} Kanggo Databasis"
+gcast_5 : "Ngobrol ID : {}\n\nWis ing Databasis"
+gcast_6 : "Kasil Mbusak {} saka Databasis"
+gcast_7 : "Ngobrol ID : {}\n\nOra ing Databasis"
+gcast_8 : "Dhaptar BLACKLIST_GCAST sampeyan saiki kosong\n\nMangga nggunakake `.addbl chat_id` utawa jinis `.addbl` ing grup..."
+gcast_9 : "BLACKLIST_GCAST In {} GROUP\n\nList:\n⇒ {}"
+
+# PLUGIN - Global
+gban_1 : "<b>Ora bisa nindakake iku kanggo dhewe</b>"
+gban_2 : "{} <b>wis ana ing daftar larangan global</b>"
+gban_3 : "<i>Sampeyan ora duwe grup chatting sing sampeyan admin</i> 🥺"
+gban_4 : "<b>#GBanned_User</b>\n\n<b>Jeneng:</b> {}</a>\n<b>Panganggo:</b> <code>{}</code>"
+gban_5 : "\n<b>Dipengaruhi kanggo:</b> <code>{}</code> <b>Obrolan</b>"
+gban_6 : "<b>Pangguna Wis Ora Dilarang Sacara Global</b>"
+gban_7 : "<b>#UnGbanned_User</b>\n\n<b>Jeneng:</b> {}\n<b>Panganggo:</b> <code>{}</code>"
+gban_8 : "Ora ana Pangguna sing Dicekal"
+gban_9 : "#DATABASE_GBAN\n\n{} Pangguna wis dilarang global"
+
+# PLUGIN - Help
+help_1 : "**Modul {} Ora dingerteni**\n\n**Mangga Ketik {}help kanggo ndeleng modul.**"
+help_2 : "\n\n☞  **Group** : @AyiinChatss\n☞  **Cathetan** :  `.help gcast` **Kanggo Ndeleng Prentah Gcast**"
+
+# PLUGIN - Image
+img_1 : "Remove.Bg Api Token sing ilang! Tambah Heroku vars utawa .env."
+img_2 : "<i>Mbusak latar mburi saka gambar iki...</i>"
+img_3 : "<i>Carane mbusak latar mburi iki ?</i>"
+
+# PLUGIN - Log
+log_1 : "<i>Aku mung ngerti on utawa off</i>"
+log_2 : "<i>PM Log Kasil Pateni</i>"
+log_3 : "<i>Log PM Kasil Diaktifake</i>"
+log_4 : "<i>Log Grup Kasil Dipateni</i>"
+log_5 : "<i>Log Grup Kasil Diaktifake</i>"
+log_6 : "<i>Log kasil dipateni</i>"
+log_7 : "<i>Log Kasil Diaktifake</i>"
+log_8 : "<i>Gunakake .log [pm/gc/all] [on/off]</i>\n\nPm: Pesen Pribadi\nGc: Obrolan Grup\nKabeh: Obrolan Grup lan Pesen Pribadi"
+
+# PLUGIN - Paste
+paste_1 : "Mung Teks Lan Dokumen Sing Bisa Tempel."
+paste_2 : "Sampeyan mung bisa nempel file sing luwih cilik tinimbang 40KB."
+paste_3 : "Mung file teks sing bisa ditempelake."
+paste_4 : "• <b>Ditempelake menyang SpaceBin :</b> <a href='{}'>SpaceBin</a>'\n• <b>Raw Url :</b> <a href='{}'>Raw</a>"
+
+# PLUGIN - PmPermit
+permit_1 : "Penipu Dideteksi!\nBlokir Otomatis!!!"
+permit_2 : "Dideteksi {} yaiku Pangembang\nOtomatis Nampa Pesen {}"
+permit_3 : "Spam Dideteksi!\nBlokir Panganggo Otomatis"
+permit_4 : "Sampeyan ora bisa nindakake iku kanggo dhewe."
+permit_5 : "Pangguna Iki Wis Ana Ing Database"
+permit_6 : "Pesen Sampeyan Wis Ditampa..."
+permit_7 : "Sampeyan saiki ora ana ing PM lan sampeyan durung mbales pesen wong liya."
+permit_8 : "Panganggo Iki Ora Ana Ing Database"
+permit_9 : "Pesen Sampeyan Wis Ditolak..."
+permit_10 : "Kasil Diblokir Panganggo!!!"
+permit_11 : "Kasil Mbukak blokir Panganggo"
+
+# PLUGIN - Purge
+purge : "**Kasil Mbusak** `{}` **Pesen.**"
+
+# PLUGIN - Sticker
+sticker_1 : "<b>Stiker ora duwe jeneng!</b>"
+sticker_2 : "<code>Gawe Paket Stiker Anyar {} Amarga paket stiker wis kebak</code>"
+sticker_3 : "<b>STIKER PANJENENGAN SIAP</b>\n<b>     ╭✠━━━━❖━━━━✠╮</b>\n            <a href=t.me/addstickers/{}>AMBIL</a>\n<b>     ╰✠━━━━❖━━━━✠╯</b>\n<b>Kanggo Gunakake Stiker</b>"
+sticker_4 : "<b>Gagal Tambah Stiker, Gunakake @Stickers Bot Kanggo Nambah Stiker Sampeyan.</b>"
+sticker_5 : "<i>Gawe Paket Stiker Anyar</i>"
+sticker_6 : "Mangga Ketik <code>^mmf text<code>"
+
+# PLUGIN - Telegraph
+telegraph : "<b>Kasil diunggah menyang</b> <a href='https://telegra.ph/{}'>Telegraph</a>"
+
+# PLUGIN - Tiktok
+tiktok_1 : "Diunggahake dening: {}"
+tiktok_2 : "Nuwun sewu gagal nemokake link sing diwenehake..."
+
+# PLUGIN - Translate
+translate : "<i>Diterjemahake</i>\n<b>Saka Basa:</b> <code>{}</code>\n<b>Kanggo Basa:</b> <code>{}</code>\n\n<i>{}</i>"
+
+# PLUGIN - Update
+update : '<b>Bot Sampeyan Wis Versi Paling anyar Kanthi Cabang <a href="https://github.com/AyiinXd/AyiinUbot/tree/{}">[{}]</a></b>'
+
+# PLUGIN - Vars
+vars_1 : "Mangga nyedhiyani Key lan Nilai\n\nTuladha:\n\n<code>.set_var PERMIT_PIC https://telegra.ph//file/15c6b7170e17451d5af7d.jpg</code>"
+vars_2 : "Nambahake Database\n\n<b>Kunci =</b> <code>{}</code>\n<b>Nilai =</b> <code>{}</code>"
+vars_3 : "Menehi kula Keyword kanggo mbusak var saka Database"
+vars_4 : "Tombol kasil dibusak.\n\nVar : {}"
+vars_5 : "Menehi sawetara kunci kanggo entuk nilai var saka database..."
+vars_6 : "<b>Database Ditemokake:</b>\n\n<b>Kunci</b> = <code>{}</code>\n<b>Nilai</b> = <code>{}</code>"
+vars_7 : "Var iki ora ana ing basis dataku..."
+
+# PLUGIN - VcPlugin
+play_1 : "🔄 pangolahan... Mangga ngenteni!"
+play_2 : "▶ <b>Memutar Lagu</b>\n\n🏷 <b>Judul:</b> <a href='{}'>{}</a>\n⏱ <b>Durasi:</b> <code>{}</code>\n💬 <b>Chat ID:</b> <code>{}</code>\n🎧 <b>Permintaan:</b> {}"
+play_3 : "<b>#⃣ Menambahkan Lagu {}</b>\n\n🏷 <b>Judul:</b> <a href='{}'>{}</a>\n⏱ <b>Durasi:</b> <code>{}</code>\n💬 <b>Chat ID:</b> <code>{}</code>\n🎧 <b>Permintaan:</b> {}"
+play_4 : "Mohon Berikan saya judul lagunya..."
+play_5 : "<code>Nuwun sewu aku ora nemu apa-apa...</code>"
+play_6 : "<b>Kasil Mandheg Stream</b>"
+play_7 : "Aku ora bisa nemu opo muter."
+play_8 : "<b>Ora Muter Apa-apa!</b>"
+play_9 : "<b>Antrian Kosong, Obrolan swara kiwa</b>"
+play_10 : "<b>⏭ Melewati</b>\n<b>🎧 Saiki Muter</b> - <a href='{}'>{}</a> | <code>{}</code>"
+play_11 : "<b>🗑️ Mbusak lagu ing ngisor iki saka Antrian: -</b>"
+play_12 : "🎧 Diputer saiki: \n<a href='{}'>{}</a> | {}"
+play_13 : "🎧 Diputer saiki: \n<a href='{}'>{}</a> | {}\n\n⏯ Daftar Lagu:"
+play_14 : "🎧 <b>Musik ngaso</b>"
+play_15 : "🎧 <b>Musik diterusake</b>"
+
+# PLUGIN - VcTools
+vctol_1 : "<b>Aktifake Obrolan Swara...</b>"
+vctol_2 : "Kasil Miwiti Obrolan Swara\n\nJudul: {}\nChat: {}\nChat ID: {}"
+vctol_3 : "Kasil Miwiti Obrolan Swara\n\nChat: {}\nChat ID: {}"
+vctol_4 : "<i>Kasil Mandheg Obrolan Swara</i>\n<b>Chat ID:</b> <code>{}</code>"
+vctol_5 : "⍟ {}\n\n❏ **Kasil Gabung Obrolan Swara**\n└ **Chat ID:** `{}`"
+vctol_6 : "⍟ {}\n\n❏ **Kasil Ninggalake Obrolan Suara**\n└ **Chat ID:** `{}`"
+
+# PLUGIN - Xxx
+x_1 : "Nemokake sawetara susu gedhe kanggo sampeyan 😂"
+x_2 : "Iki gambar payudara sing dakkarepake Pak 😂"
+
+# PLUGIN - ?????
+back : "ʙᴀʟɪᴋɴᴏ"
+lang : "Dhaptar Basa Kasedhiya."

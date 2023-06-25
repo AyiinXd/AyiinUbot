@@ -1,22 +1,6 @@
 # Copyright (C) 2020  sandeep.n(π.$)
 # button post makker for catuserbot thanks to uniborg for the base
 # by @sandy1709 (@mrconfused)
-#
-# Recode By : @AyiinXd
-#
-# Ayiin - Ubot
-# Copyright (C) 2022-2023 @AyiinXd
-#
-# This file is a part of < https://github.com/AyiinXd/AyiinUbot >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
-#
-# FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
-# t.me/AyiinChat & t.me/AyiinSupport
-#
-# ========================×========================
-#            Jangan Hapus Credit Ngentod
-# ========================×========================
 
 import os
 import re
@@ -37,7 +21,7 @@ from . import *
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 
-@Ayiin(["cbutton"])
+@Ayiin(["button"])
 async def c_button(client: Client, msg: Message):
     reply_message = msg.reply_to_message
     if reply_message:
@@ -109,7 +93,7 @@ CMD_HELP.update(
     {"button": (
         "button",
         {
-            "cbutton" : "Untuk membuat pesan button\n\nNOTE: Bot harus ditambahkan ke group atau channel untuk menggunakan modul ini\n\n**Contoh :** `.cbutton test\n[It's Me]<buttonurl:https://t.me/AyiinXd>\n[Channel]<buttonurl:https://t.me/AyiinSupport>\n[Support]<buttonurl:https://t.me/AyiinChat:same>`",
+            "button" : "Untuk membuat pesan button\n\nNOTE: Bot harus ditambahkan ke group atau channel untuk menggunakan modul ini\n\n**Contoh :** `.cbutton test\n[google]<buttonurl:https://www.google.com>\n[Channel]<buttonurl:https://t.me/AyiinChannel:same>\n[Support]<buttonurl:https://t.me/AyiinChats>`",
         }
     )
     }

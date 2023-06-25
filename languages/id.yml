@@ -1,0 +1,188 @@
+nama : Indonesia
+asli: Indonesia
+penulis:
+  - AyiinXd
+
+# String Umum
+p : "<code>Memproses...</code>"
+err : "[ ᴇʀʀᴏʀ ] - {}"
+err_media : "[ ᴇʀʀᴏʀ ] - Maaf tidak dapat mengirim media grup ini"
+err_user : "[ ᴇʀʀᴏʀ ] - Saya tidak dapat menemukan pengguna tersebut."
+link : "Berikan link yang ingin dicari"
+reply : "Balas ke pesan untuk menjalankan perintah itu..."
+reply_media : "<i>Silahkan Balas ke Media Foto/GIF/Sticker!</i>"
+reply_photo : "Silahkan Balas Ke Gambar"
+reply_sticker : "<i>Silahkan Balas Ke Pesan Sticker!</i>"
+size_big : "<b>Changelog terlalu besar, dikirim sebagai file.</b>"
+upload : "Mengunggah..."
+download : "Mengunduh..."
+
+# String Ayiin
+ayiin_1: "<b>[ ᴋᴏɴᴛᴏʟ ]</b> - Perintah Itu Dilarang Di Obrolan Grup Ini..."
+ayiin_2: "<b>[ ᴋᴏɴᴛᴏʟ ]</b> - Perintah dibatalkan karna dia adalah Developer..."
+
+# PLUGIN - Admins
+admin_1 : "Balas ke foto untuk menyetelnya!"
+admin_2 : "Saya tidak bisa memblokir diri saya sendiri."
+admin_3 : "<b>Pengguna yang Dilarang:</b> {}\n<b>Dilarang Oleh:</b> {}\n"
+admin_4 : "Alasan: {}"
+admin_5 : "Anda Tidak Memiliki Hak Admin Untuk Itu!!!"
+admin_6 : "Bodoh Dia Adalah Pemilik Obrolan Grup!!!"
+admin_7 : "Anda tidak dapat membatalkan pemblokiran saluran"
+admin_8 : "Berikan nama pengguna atau balas pesan pengguna untuk membatalkan pemblokiran"
+admin_9 : "Batalkan larangan! {}"
+admin_10 : "Melepas Sematan Pesan Ini."
+admin_11 : "Menyematkan Pesan Ini."
+admin_12 : "Saya tidak bisa membisukan diri saya sendiri."
+admin_13 : "<b>Bisukan Pengguna:</b> {}\n<b>Dibisukan Oleh:</b> {}\n"
+admin_14 : "Tidak dibisukan! {}"
+admin_15 : "Saya tidak bisa menendang diri saya sendiri."
+admin_16 : "Saya tidak bisa menendang admin, Anda tahu aturannya, begitu juga saya."
+admin_17 : "<b>Pengguna Ditendang:</b> {}\n<b>Ditendang Oleh:</b> {}"
+admin_18 : "Dipromosikan Sepenuhnya! {}"
+admin_19 : "Dipromosikan! {}"
+admin_20 : "Saya tidak bisa menurunkan diri saya sendiri"
+admin_21 : "Diturunkan! {}"
+
+# PLUGIN - Carbon
+carbon_1 : "**Menyiapkan Carbon...**"
+carbon_2 : "Dikarbonisasi Oleh {}"
+
+# PLUGIN - Gcast
+gcast_1 : "<b>Berhasil Mengirim Pesan Terusan...\n\nBerhasil Ke</b> <code>{}</code> <b>Grup\nGagal Ke</b> <code>{}</code> <b>Grup</b>"
+gcast_2 : "<b>Berhasil Mengirim Pesan Siaran...\n\nBerhasil Ke</b> <code>{}</code> <b>Grup\nGagal Ke</b> <code>{}</code> <b>Grup</b>"
+gcast_3 : "<b>Berhasil Mengirim Pesan...\n\nBerhasil Ke</b> <code>{}</code> <b>Pengguna\nGagal Ke</b> <code>{}</code> <b>Pengguna</b>"
+gcast_4 : "Berhasil Menambahkan {} Ke Databasis"
+gcast_5 : "Chat ID : {}\n\nSudah ada di Databasis"
+gcast_6 : "Berhasil Menghapus {} dari Databasis"
+gcast_7 : "Chat ID : {}\n\nTidak ada di Databasis"
+gcast_8 : "List BLACKLIST_GCAST anda saat ini kosong\n\nSilahkan gunakan `.addbl chat_id` atau ketik `.addbl` di group..."
+gcast_9 : "BLACKLIST_GCAST Di {} GROUP\n\nList:\n⇒ {}"
+
+# PLUGIN - Global
+gban_1 : "<b>Tidak bisa melakukan itu ke Diri sendiri</b>"
+gban_2 : "{} <b>sudah ada di daftar global banned</b>"
+gban_3 : "<i>Anda tidak mempunyai GC yang anda admin</i> 🥺"
+gban_4 : "<b>#GBanned_User</b>\n\n<b>Nama:</b> {}</a>\n<b>Pengguna:</b> <code>{}</code>"
+gban_5 : "\n<b>Terpengaruh ke:</b> <code>{done}</code> <b>Chats</b>"
+gban_6 : "Pengguna Sudah Dilepas Larangan Secara Global"
+gban_7 : "<b>#UnGbanned_User</b>\n\n<b>Nama:</b> {}\n<b>Pengguna:</b> <code>{}</code>"
+gban_8 : "Belum ada Pengguna yang Di-Gban"
+gban_9 : "#DATABASE_GBAN\n\n{} Pengguna telah di gban"
+
+# PLUGIN - Help
+help_1 : "**Modul {} Tidak diketahui**\n\n**Silahkan Ketik {}help untuk melihat modul.**"
+help_2 : "\n\n☞  **Group** : @AyiinChatss\n☞  **Catatan** :  `.help gcast` **Untuk Melihat Perintah Gcast**"
+
+# PLUGIN - Image
+img_1 : "Remove.Bg Api Token hilang! Tambahkan ke vars Heroku atau .env."
+img_2 : "<i>Menghapus latar belakang dari gambar ini...</i>"
+img_3 : "<i>Bagaimana cara menghapus latar belakang ini ?</i>"
+
+# PLUGIN - Log
+log_1 : "<i>Saya hanya mengerti on atau off</i>"
+log_2 : "<i>PM Log Berhail Dinonaktifkan</i>"
+log_3 : "<i>PM Log Berhasil Diaktifkan</i>"
+log_4 : "<i>Group Log Berhail Dinonaktifkan</i>"
+log_5 : "<i>Group Log Berhasil Diaktifkan</i>"
+log_6 : "<i>Log Berhail Dinonaktifkan</i>"
+log_7 : "<i>Log Berhasil Diaktifkan</i>"
+log_8 : "<i>Gunakan .log [pm/gc/all] [on/off]</i>\n\nPm: Pesan Pribadi\nGc: Obrolan Grup\nSemua: Obrolan Grup dan Pesan Pribadi"
+
+# PLUGIN - Paste
+paste_1 : "Hanya Text Dan Document Yang Bisa Saya Paste."
+paste_2 : "Anda hanya dapat menempelkan file yang lebih kecil dari 40KB."
+paste_3 : "Hanya file teks yang dapat ditempel."
+paste_4 : "• <b>Pasted to SpaceBin :</b> <a href='{}'>SpaceBin</a>'\n• <b>Raw Url :</b> <a href='{}'>Raw</a>"
+
+# PLUGIN - PmPermit
+permit_1 : "Penipu Terdeteksi!\nOtomatis Memblokir!!!"
+permit_2 : "Terdeteksi {} adalah Developer\nOtomatis Menerima Pesan {}"
+permit_3 : "Terdeteksi Spam!\nOtomatis Memblokir Pengguna"
+permit_4 : "Anda tidak dapat melakukan itu ke diri sendiri."
+permit_5 : "Pengguna Ini Sudah Ada Di Database"
+permit_6 : "Pesan Anda Diterima Tod"
+permit_7 : "Saat ini Anda tidak sedang dalam PM dan Anda belum membalas pesan seseorang."
+permit_8 : "Pengguna Ini Tidak Ada Di Database"
+permit_9 : "Pesan Anda Ditolak Tod"
+permit_10 : "Berhasil Memblokir Pengguna!!!"
+permit_11 : "Berhasil Membuka Blokir Pengguna"
+
+# PLUGIN - Purge
+purge : "**Berhasil Menghapus** `{}` **pesan.**"
+
+# PLUGIN - Sticker
+sticker_1 : "<b>Stiker tidak memiliki Nama!</b>"
+sticker_2 : "<code>Membuat Sticker Pack Baru {} Karena Sticker Pack Sudah Penuh</code>"
+sticker_3 : "<b>STICKER ANDA SUDAH SIAP</b>\n<b>     ╭✠━━━━❖━━━━✠╮</b>\n            <a href=t.me/addstickers/{}>AMBIL</a>\n<b>     ╰✠━━━━❖━━━━✠╯</b>\n<b>Untuk Menggunakan Stickers</b>"
+sticker_4 : "<b>Gagal Menambahkan Sticker, Gunakan @Stickers Bot Untuk Menambahkan Sticker Anda.</b>"
+sticker_5 : "<i>Membuat Sticker Pack Baru</i>"
+sticker_6 : "Harap Ketik <code>^mmf text<code>"
+
+# PLUGIN - Telegraph
+telegraph : "<b>Berhasil diunggah ke</b> <a href='https://telegra.ph/{}'>Telegraph</a>"
+
+# PLUGIN - Tiktok
+tiktok_1 : "Diunggah oleh: {}"
+tiktok_2 : "Maaf gagal mencari link yang diberikan..."
+
+# PLUGIN - Translate
+translate : "<i>Diterjemahkan</i>\n<b>Dari Bahasa:</b> <code>{}</code>\n<b>Ke Bahasa:</b> <code>{}</code>\n\n<i>{}</i>"
+
+# PLUGIN - Update
+update : '<b>Bot Anda Sudah Versi Terbaru Dengan Cabang <a href="https://github.com/AyiinXd/AyiinUbot/tree/{}">[{}]</a></b>'
+
+# PLUGIN - Vars
+vars_1 : "Mohon berikan Kunci dan Nilai\n\nContoh:\n\n<code>.set_var PERMIT_PIC https://telegra.ph//file/15c6b7170e17451d5af7d.jpg</code>"
+vars_2 : "Menambahkan Basis data\n\n<b>Kunci =</b> <code>{}</code>\n<b>Nilai =</b> <code>{}</code>"
+vars_3 : "Beri saya Kata kunci untuk menghapus var dari Basis Data"
+vars_4 : "Kunci berhasil dihapus.\n\nVar : {}"
+vars_5 : "Beri saya beberapa kunci untuk mendapatkan nilai var dari database..."
+vars_6 : "<b>Basis Data Ditemukan:</b>\n\n<b>Kunci</b> = <code>{}</code>\n<b>Nilai</b> = <code>{}</code>"
+vars_7 : "Var ini tidak ada di basis data saya..."
+
+# PLUGIN - VcPlugin
+play_1 : "🔄 Memproses... Harap Tunggu!"
+play_2 : "▶ <b>Memutar Lagu</b>\n\n🏷 <b>Judul:</b> <a href='{}'>{}</a>\n⏱ <b>Durasi:</b> <code>{}</code>\n💬 <b>Chat ID:</b> <code>{}</code>\n🎧 <b>Permintaan:</b> {}"
+play_3 : "<b>#⃣ Menambahkan Lagu {}</b>\n\n🏷 <b>Judul:</b> <a href='{}'>{}</a>\n⏱ <b>Durasi:</b> <code>{}</code>\n💬 <b>Chat ID:</b> <code>{}</code>\n🎧 <b>Permintaan:</b> {}"
+play_4 : "Mohon Berikan saya judul lagunya..."
+play_5 : "<code>Maaf saya tidak menemukan apa-apa....</code>"
+play_6 : "<b>Berhasil Menghentikan Streaming</b>"
+play_7 : "Saya tidak menemukan apapun yg sedang diputar."
+play_8 : "<b>Tidak Sedang Memutar Apapun!</b>"
+play_9 : "<b>Antrian Kosong, Meninggalkan obrolan suara</b>"
+play_10 : "<b>⏭ Melewati</b>\n<b>🎧 Sekarang Memutar</b> - <a href='{}'>{}</a> | <code>{}</code>"
+play_11 : "<b>🗑️ Menghapus lagu-lagu berikut dari Antrian: -</b>"
+play_12 : "🎧 Dimainkan sekarang: \n<a href='{}'>{}</a> | {}"
+play_13 : "🎧 Dimainkan sekarang: \n<a href='{}'>{}</a> | {}\n\n⏯ Daftar Lagu:"
+play_14 : "🎧 <b>Musik dijeda</b>"
+play_15 : "🎧 <b>Musik dilanjutkan</b>"
+
+# PLUGIN - Songs
+song_1 : "Anda dapat mengunduh Musik atau Video dari YouTube hanya dalam obrolan pribadi. Silakan mulai saya dalam obrolan pribadi."
+song_2 : "**Penggunaan:**\n\n/song [Nama Musik] atau [Tautan YouTube]"
+song_3 : "Live Link Detected. Saya tidak bisa mendownload video live youtube."
+song_4 : "**🔗Title:**- {0}\n\nPilih jenis yang ingin Anda unduh."
+song_5 : "Bukan Tautan Youtube yang valid"
+song_6 : "Mendapatkan Format.. \n\nMohon Tunggu.."
+song_7 : "Gagal mendapatkan format yang tersedia untuk video. Silakan coba trek lain."
+song_8 : "Pengunduhan Dimulai\n\nKecepatan pengunduhan mungkin lambat. Harap tunggu.."
+song_9 : "Gagal mendownload lagu dari Youtube-DL\n\n**Alasan:** {0}"
+song_10 : "Gagal mengunggah telegram dari server."
+song_11 : "Pengunggahan Dimulai\n\nKecepatan pengunggahan mungkin lambat. Harap tunggu sebentar.."
+
+# PLUGIN - VcTools
+vctol_1 : "<b>Menghidupkan Obrolan Suara...</b>"
+vctol_2 : "Berhasil Memulai Obrolan Suara\n\nJudul: {}\nChat: {}\nChat ID: {}"
+vctol_3 : "Berhasil Memulai Obrolan Suara\n\nChat: {}\nChat ID: {}"
+vctol_4 : "<i>Berhasil Menghentikan Obrolan Suara</i>\n<b>Chat ID:</b> <code>{}</code>"
+vctol_5 : "⍟ {}\n\n❏ **Berhasil Bergabung Ke Obrolan Suara**\n└ **Chat ID:** `{}`"
+vctol_6 : "⍟ {}\n\n❏ **Berhasil Meninggalkan Obrolan Suara**\n└ **Chat ID:** `{}`"
+
+# PLUGIN - Xxx
+x_1 : "Menemukan beberapa payudara besar untukmu 😂"
+x_2 : "Ini gambar payudara yang saya dapat tuan 😂"
+
+# PLUGIN - ?????
+back : "ᴋᴇᴍʙᴀʟɪ"
+lang : "Daftar Bahasa Yang Tersedia."
