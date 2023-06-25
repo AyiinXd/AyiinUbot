@@ -1,3 +1,18 @@
+# Ayiin - Ubot
+# Copyright (C) 2022-2023 @AyiinXd
+#
+# This file is a part of < https://github.com/AyiinXd/AyiinUbot >
+# PLease read the GNU Affero General Public License in
+# <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
+#
+# FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
+# t.me/AyiinChats & t.me/AyiinChannel
+
+
+# ========================×========================
+#            Jangan Hapus Credit Ngentod
+# ========================×========================
+
 import asyncio
 
 from fipper import Client, filters
@@ -92,51 +107,6 @@ async def pmpermit_func(client: Client, message: Message, _):
         except BaseException:
             pass
     OLD_MSG[str(user_.id)] = msg_dlt
-
-'''
-@Ayiin(["pm"])
-async def pm_approve(client: Client, message: Message):
-    ids = client.me.id
-    commands = message.command[1]
-    cmd = message.text.split(None, 2)[2]
-    if commands == "permit":
-        if cmd == "on":
-            #if await get_pmermit(ids):
-            #    return await message.reply("PmPermit Anda Sudah Aktif Sebelumnya.")
-            await set_pmpermit(ids, True)
-            return await message.reply("PmPermit anda berhasil di aktifkan.")
-        elif cmd == "off":
-            #if not await get_pmermit(ids):
-            #    return await message.reply("PmPermit anda belum di aktifkan silahkan ketik .set_permit on")
-            await set_pmpermit(ids, False)
-            return await message.reply("PmPermit anda berhasil di matikan.")
-        else:
-            return await message.reply("Berikan saya perintah on atau off")
-    elif commands == "limit":
-        if int(cmd) or cmd.isdigit():
-            await limit_pmpermit(ids, int(cmd))
-            return await message.reply(f"PmPermit Limit berhasil di atur menjadi {int(cmd)}")
-        else:
-            return await message.reply("Mohon berikan saya angka untuk mengatur PmPermit Limit anda.")
-    elif commands == "message":
-        if cmd:
-            await message_pmpermit(ids, cmd)
-            return await message.reply(f'PmPermit Message:\n\nBerhasil di atur menjadi\n\n<code>{cmd}</code>')
-        else:
-            return await message.reply(f'Berikan saya teks untuk mengatur pesan PmPermit anda.')
-    elif commands == "media":
-        if cmd:
-            await media_pmpermit(ids, cmd)
-            return await message.reply(f'PmPermit Message Media:\n\nBerhasil di atur menjadi\n\n<code>{cmd}</code>')
-    elif commands == "block":
-        if cmd:
-            await block_message_pmpermit(ids, cmd)
-            return await message.reply(f'PmPermit Message Block:\n\nBerhasil di atur menjadi\n\n<code>{cmd}</code>')
-        else:
-            return await message.reply("berikan saya teks untuk mengatur pesan blokir PmPermit anda.")
-    else:
-        return await message.reply('Berikan saya perintah contoh .pm message hello guys')
-'''
 
 
 @Ayiin(["ok", "a"], langs=True)
@@ -246,7 +216,6 @@ CMD_HELP.update(
             "tolak": "Menolak Pesan PmPermit",
             "unblock [reply]": "Lepas Blokir Pengguna",
             "block [reply]": "Memblokir Pengguna",
-            "pm [args: permit (on/off) | limit (angka) | message (text) | media (url media) | block (text)]": "Untuk mengatur PmPermit anda\n\nContoh:\n.pm permit on untuk mengaktifkan PmPermit anda\n.pm message text untuk mengatur teks PmPermit anda",
         }
     )
     }

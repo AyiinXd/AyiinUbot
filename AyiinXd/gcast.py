@@ -6,6 +6,22 @@
 # <https://www.github.com/mrismanaziz/PyroMan-UserBot/blob/main/LICENSE/>.
 #
 # t.me/SharingUserbot & t.me/Lunatic0de
+#
+# Recode By : @AyiinXd
+#
+# Ayiin - Ubot
+# Copyright (C) 2022-2023 @AyiinXd
+#
+# This file is a part of < https://github.com/AyiinXd/AyiinUbot >
+# PLease read the GNU Affero General Public License in
+# <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
+#
+# FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
+# t.me/AyiinChat & t.me/AyiinSupport
+#
+# ========================×========================
+#            Jangan Hapus Credit Ngentod
+# ========================×========================
 
 import asyncio
 
@@ -22,6 +38,11 @@ from . import yins
 
 @Ayiin(["fgcast", "fw_cast"], langs=True)
 async def gcast_cmd(client: Client, message: Message, _):
+    '''
+    ========================×========================
+            Copyright (C) 2023-present AyiinXd
+    ========================×========================
+    '''
     BL = await blacklisted()
     if message.reply_to_message:
         AyiinXD = await message.reply(_["p"])
@@ -55,6 +76,11 @@ async def gcast_cmd(client: Client, message: Message, _):
 
 @Ayiin(["gcast", "broadcast"], langs=True)
 async def gcast_cmd(client: Client, message: Message, _):
+    '''
+    ========================×========================
+            Copyright (C) 2023-present AyiinXd
+    ========================×========================
+    '''
     BL = await blacklisted()
     if message.reply_to_message:
         AyiinXD = await message.reply(_['p'])
@@ -88,6 +114,11 @@ async def gcast_cmd(client: Client, message: Message, _):
 
 @Ayiin(["gucast"], langs=True)
 async def gucast_cmd(client: Client, message: Message, _):
+    '''
+    ========================×========================
+            Copyright (C) 2023-present AyiinXd
+    ========================×========================
+    '''
     if message.reply_to_message:
         XD = await message.reply(_['p'])
     else:
@@ -118,6 +149,11 @@ async def gucast_cmd(client: Client, message: Message, _):
 
 @Ayiin(['addblacklist', 'addbl'], langs=True)
 async def add_bl(client: Client, message: Message, _):
+    '''
+    ========================×========================
+            Copyright (C) 2023-present AyiinXd
+    ========================×========================
+    '''
     chat_id = message.chat.id
     cmd = yins.get_cmd(message)
     if cmd:
@@ -142,6 +178,11 @@ async def add_bl(client: Client, message: Message, _):
 
 @Ayiin(['delblacklist', 'delbl'], langs=True)
 async def del_bl(client: Client, message: Message, _):
+    '''
+    ========================×========================
+            Copyright (C) 2023-present AyiinXd
+    ========================×========================
+    '''
     chat_id = message.chat.id
     cmd = yins.get_cmd(message)
     if cmd:
@@ -166,6 +207,11 @@ async def del_bl(client: Client, message: Message, _):
 
 @Ayiin(['blacklist', 'blchat'], langs=True)
 async def list_bl(client: Client, message: Message, _):
+    '''
+    ========================×========================
+            Copyright (C) 2023-present AyiinXd
+    ========================×========================
+    '''
     chats = await blacklisted()
     chat_id = f'{chats}'
     list = (

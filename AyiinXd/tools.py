@@ -1,17 +1,11 @@
-# Ayiin - Userbot
-# Copyright (C) 2022-2023 @AyiinXd
+# Credits: @mrismanaziz
+# Copyright (C) 2022 Pyro-ManUserbot
 #
-# This file is a part of < https://github.com/AyiinXd/Ayiin-Userbot >
+# This file is a part of < https://github.com/mrismanaziz/PyroMan-Userbot/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/AyiinXd/Ayiin-Userbot/blob/main/LICENSE/>.
+# <https://www.github.com/mrismanaziz/PyroMan-Userbot/blob/main/LICENSE/>.
 #
-# FROM Ayiin-Userbot <https://github.com/AyiinXd/Ayiin-Userbot>
-# t.me/AyiinXdSupport & t.me/AyiinChannel
-
-
-# ========================×========================
-#            Jangan Hapus Credit Ngentod
-# ========================×========================
+# t.me/SharingUserbot & t.me/Lunatic0de
 
 import platform
 import re
@@ -95,6 +89,11 @@ async def chatinfo_handler(client: Client, message: Message):
 
 @Ayiin(["limit", "lmt"])
 async def spamban(client: Client, m: Message):
+    '''
+    ========================×========================
+            Copyright (C) 2023-present AyiinXd
+    ========================×========================
+    '''
     msg = await eor(m, "<i>Process...</i>")
     boti = "@SpamBot"
     await client.unblock_user(boti)

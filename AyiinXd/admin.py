@@ -6,6 +6,8 @@
 # <https://www.github.com/mrismanaziz/PyroMan-UserBot/blob/main/LICENSE/>.
 #
 # t.me/SharingUserbot & t.me/Lunatic0de
+#
+# Recode By : @AyiinXd
 
 import asyncio
 

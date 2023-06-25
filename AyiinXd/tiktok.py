@@ -1,3 +1,17 @@
+# Ayiin - Ubot
+# Copyright (C) 2022-2023 @AyiinXd
+#
+# This file is a part of < https://github.com/AyiinXd/AyiinUbot >
+# PLease read the GNU Affero General Public License in
+# <https://www.github.com/AyiinXd/AyiinUbot/blob/main/LICENSE/>.
+#
+# FROM AyiinUbot <https://github.com/AyiinXd/AyiinUbot>
+# t.me/AyiinChat & t.me/AyiinSupport
+
+
+# ========================×========================
+#            Jangan Hapus Credit Ngentod
+# ========================×========================
 
 from fipper import Client
 from fipper.types import Message
