@@ -47,7 +47,7 @@ from config import *
 async def pmpermit_func(client: Client, message: Message, _):
     user_ = message.from_user
     me_id = client.me.id
-    pmper = Var.PM_PERMIT
+    pmper = Var.PMPERMIT
     if pmper == False:
         return True
     if user_.is_bot:
